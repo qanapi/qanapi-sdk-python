@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, List, Union, Iterable, cast
+from typing import Any, Dict, List, Union, Iterable, cast
 
 import httpx
 
@@ -46,7 +46,7 @@ class DecryptResource(SyncAPIResource):
     def decrypt_payload(
         self,
         *,
-        data: Union[str, Iterable[object], object],
+        data: Union[str, Dict[str, object], Iterable[object]],
         sensitive_fields: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -126,7 +126,7 @@ class AsyncDecryptResource(AsyncAPIResource):
     async def decrypt_payload(
         self,
         *,
-        data: Union[str, Iterable[object], object],
+        data: Union[str, Dict[str, object], Iterable[object]],
         sensitive_fields: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

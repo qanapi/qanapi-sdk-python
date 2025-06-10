@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Dict, List, Union, Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -11,7 +11,7 @@ __all__ = ["DecryptDecryptPayloadParams"]
 
 
 class DecryptDecryptPayloadParams(TypedDict, total=False):
-    data: Required[Union[str, Iterable[object], object]]
+    data: Required[Union[str, Dict[str, object], Iterable[object]]]
     """The encrypted payload to decrypt.
 
     - Can be a string or an object/array with encrypted fields.
