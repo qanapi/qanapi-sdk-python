@@ -21,7 +21,7 @@ class TestDecrypt:
     @parametrize
     def test_method_decrypt_payload(self, client: Qanapi) -> None:
         decrypt = client.decrypt.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
         )
         assert_matches_type(DecryptDecryptPayloadResponse, decrypt, path=["response"])
 
@@ -29,7 +29,7 @@ class TestDecrypt:
     @parametrize
     def test_method_decrypt_payload_with_all_params(self, client: Qanapi) -> None:
         decrypt = client.decrypt.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
             sensitive_fields=["password"],
         )
         assert_matches_type(DecryptDecryptPayloadResponse, decrypt, path=["response"])
@@ -38,7 +38,7 @@ class TestDecrypt:
     @parametrize
     def test_raw_response_decrypt_payload(self, client: Qanapi) -> None:
         response = client.decrypt.with_raw_response.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
         )
 
         assert response.is_closed is True
@@ -50,7 +50,7 @@ class TestDecrypt:
     @parametrize
     def test_streaming_response_decrypt_payload(self, client: Qanapi) -> None:
         with client.decrypt.with_streaming_response.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -68,7 +68,7 @@ class TestAsyncDecrypt:
     @parametrize
     async def test_method_decrypt_payload(self, async_client: AsyncQanapi) -> None:
         decrypt = await async_client.decrypt.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
         )
         assert_matches_type(DecryptDecryptPayloadResponse, decrypt, path=["response"])
 
@@ -76,7 +76,7 @@ class TestAsyncDecrypt:
     @parametrize
     async def test_method_decrypt_payload_with_all_params(self, async_client: AsyncQanapi) -> None:
         decrypt = await async_client.decrypt.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
             sensitive_fields=["password"],
         )
         assert_matches_type(DecryptDecryptPayloadResponse, decrypt, path=["response"])
@@ -85,7 +85,7 @@ class TestAsyncDecrypt:
     @parametrize
     async def test_raw_response_decrypt_payload(self, async_client: AsyncQanapi) -> None:
         response = await async_client.decrypt.with_raw_response.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
         )
 
         assert response.is_closed is True
@@ -97,7 +97,7 @@ class TestAsyncDecrypt:
     @parametrize
     async def test_streaming_response_decrypt_payload(self, async_client: AsyncQanapi) -> None:
         async with async_client.decrypt.with_streaming_response.decrypt_payload(
-            data={"password": "enc$::abc123::..."},
+            data={"password": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
