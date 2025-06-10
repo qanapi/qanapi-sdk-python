@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, List, Union, Iterable, cast
+from typing import Any, Dict, List, Union, Iterable, cast
 
 import httpx
 
@@ -46,7 +46,7 @@ class EncryptResource(SyncAPIResource):
     def encrypt_data(
         self,
         *,
-        data: Union[str, float, Iterable[object], object],
+        data: Union[str, float, Dict[str, object], Iterable[object]],
         access: encrypt_encrypt_data_params.Access | NotGiven = NOT_GIVEN,
         attributes: encrypt_encrypt_data_params.Attributes | NotGiven = NOT_GIVEN,
         sensitive_fields: List[str] | NotGiven = NOT_GIVEN,
@@ -137,7 +137,7 @@ class AsyncEncryptResource(AsyncAPIResource):
     async def encrypt_data(
         self,
         *,
-        data: Union[str, float, Iterable[object], object],
+        data: Union[str, float, Dict[str, object], Iterable[object]],
         access: encrypt_encrypt_data_params.Access | NotGiven = NOT_GIVEN,
         attributes: encrypt_encrypt_data_params.Attributes | NotGiven = NOT_GIVEN,
         sensitive_fields: List[str] | NotGiven = NOT_GIVEN,
