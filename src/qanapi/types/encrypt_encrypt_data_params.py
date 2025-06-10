@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Dict, List, Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -11,7 +11,7 @@ __all__ = ["EncryptEncryptDataParams", "Access", "Attributes"]
 
 
 class EncryptEncryptDataParams(TypedDict, total=False):
-    data: Required[Union[str, float, Iterable[object], object]]
+    data: Required[Union[str, float, Dict[str, object], Iterable[object]]]
     """The actual data to encrypt.
 
     - Can be a scalar (string/number), object, or array.
