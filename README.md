@@ -16,7 +16,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```sh
 # install from PyPI
-pip install --pre qanapi
+pip install qanapi
 ```
 
 ## Usage
