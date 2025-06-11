@@ -93,7 +93,7 @@ client = Qanapi(
 )
 
 response = client.encrypt.encrypt_data(
-    data={"password": "secret"},
+    data={"password": "bar"},
     access={"acl": ["admin"]},
 )
 print(response.access)

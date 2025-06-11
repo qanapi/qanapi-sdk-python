@@ -21,7 +21,7 @@ class TestEncrypt:
     @parametrize
     def test_method_encrypt_data(self, client: Qanapi) -> None:
         encrypt = client.encrypt.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
@@ -29,7 +29,7 @@ class TestEncrypt:
     @parametrize
     def test_method_encrypt_data_with_all_params(self, client: Qanapi) -> None:
         encrypt = client.encrypt.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
             access={"acl": ["admin"]},
             attributes={
                 "classification": "confidential",
@@ -44,7 +44,7 @@ class TestEncrypt:
     @parametrize
     def test_raw_response_encrypt_data(self, client: Qanapi) -> None:
         response = client.encrypt.with_raw_response.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
         )
 
         assert response.is_closed is True
@@ -56,7 +56,7 @@ class TestEncrypt:
     @parametrize
     def test_streaming_response_encrypt_data(self, client: Qanapi) -> None:
         with client.encrypt.with_streaming_response.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,7 +74,7 @@ class TestAsyncEncrypt:
     @parametrize
     async def test_method_encrypt_data(self, async_client: AsyncQanapi) -> None:
         encrypt = await async_client.encrypt.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
@@ -82,7 +82,7 @@ class TestAsyncEncrypt:
     @parametrize
     async def test_method_encrypt_data_with_all_params(self, async_client: AsyncQanapi) -> None:
         encrypt = await async_client.encrypt.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
             access={"acl": ["admin"]},
             attributes={
                 "classification": "confidential",
@@ -97,7 +97,7 @@ class TestAsyncEncrypt:
     @parametrize
     async def test_raw_response_encrypt_data(self, async_client: AsyncQanapi) -> None:
         response = await async_client.encrypt.with_raw_response.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
         )
 
         assert response.is_closed is True
@@ -109,7 +109,7 @@ class TestAsyncEncrypt:
     @parametrize
     async def test_streaming_response_encrypt_data(self, async_client: AsyncQanapi) -> None:
         async with async_client.encrypt.with_streaming_response.encrypt_data(
-            data={"password": "secret"},
+            data={"password": "bar"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
