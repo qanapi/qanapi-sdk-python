@@ -28,7 +28,7 @@ class TestAuth:
     def test_method_login(self, client: Qanapi) -> None:
         auth = client.auth.login(
             email="valid@email.com",
-            password="secret123",
+            password="secret1234",
         )
         assert_matches_type(AuthLoginResponse, auth, path=["response"])
 
@@ -37,7 +37,7 @@ class TestAuth:
     def test_raw_response_login(self, client: Qanapi) -> None:
         response = client.auth.with_raw_response.login(
             email="valid@email.com",
-            password="secret123",
+            password="secret1234",
         )
 
         assert response.is_closed is True
@@ -50,7 +50,7 @@ class TestAuth:
     def test_streaming_response_login(self, client: Qanapi) -> None:
         with client.auth.with_streaming_response.login(
             email="valid@email.com",
-            password="secret123",
+            password="secret1234",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -181,7 +181,7 @@ class TestAsyncAuth:
     async def test_method_login(self, async_client: AsyncQanapi) -> None:
         auth = await async_client.auth.login(
             email="valid@email.com",
-            password="secret123",
+            password="secret1234",
         )
         assert_matches_type(AuthLoginResponse, auth, path=["response"])
 
@@ -190,7 +190,7 @@ class TestAsyncAuth:
     async def test_raw_response_login(self, async_client: AsyncQanapi) -> None:
         response = await async_client.auth.with_raw_response.login(
             email="valid@email.com",
-            password="secret123",
+            password="secret1234",
         )
 
         assert response.is_closed is True
@@ -203,7 +203,7 @@ class TestAsyncAuth:
     async def test_streaming_response_login(self, async_client: AsyncQanapi) -> None:
         async with async_client.auth.with_streaming_response.login(
             email="valid@email.com",
-            password="secret123",
+            password="secret1234",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
