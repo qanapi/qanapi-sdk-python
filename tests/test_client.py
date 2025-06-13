@@ -775,7 +775,7 @@ class TestQanapi:
             self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -792,7 +792,7 @@ class TestQanapi:
             self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -826,7 +826,7 @@ class TestQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(email="valid@email.com", password="secret123")
+        response = client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -851,7 +851,7 @@ class TestQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": Omit()}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -876,7 +876,7 @@ class TestQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": "42"}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -1635,7 +1635,7 @@ class TestAsyncQanapi:
             await self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -1652,7 +1652,7 @@ class TestAsyncQanapi:
             await self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -1687,7 +1687,7 @@ class TestAsyncQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(email="valid@email.com", password="secret123")
+        response = await client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1713,7 +1713,7 @@ class TestAsyncQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = await client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": Omit()}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1739,7 +1739,7 @@ class TestAsyncQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = await client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": "42"}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
