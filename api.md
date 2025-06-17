@@ -25,7 +25,7 @@ Methods:
 Types:
 
 ```python
-from qanapi.types import EncryptEncryptDataResponse
+from qanapi.types import Encrypt, EncryptEncryptDataResponse
 ```
 
 Methods:
@@ -37,7 +37,7 @@ Methods:
 Types:
 
 ```python
-from qanapi.types import DecryptDecryptPayloadResponse
+from qanapi.types import Descrypt, DecryptDecryptPayloadResponse
 ```
 
 Methods:
