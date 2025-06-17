@@ -27,7 +27,14 @@ from qanapi._utils import maybe_transform
 from qanapi._models import BaseModel, FinalRequestOptions
 from qanapi._constants import RAW_RESPONSE_HEADER
 from qanapi._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
-from qanapi._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from qanapi._base_client import (
+    DEFAULT_TIMEOUT,
+    HTTPX_DEFAULT_TIMEOUT,
+    BaseClient,
+    DefaultHttpxClient,
+    DefaultAsyncHttpxClient,
+    make_request_options,
+)
 from qanapi.types.auth_login_params import AuthLoginParams
 
 from .utils import update_env
@@ -775,7 +782,7 @@ class TestQanapi:
             self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -792,7 +799,7 @@ class TestQanapi:
             self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -826,7 +833,7 @@ class TestQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(email="valid@email.com", password="secret123")
+        response = client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -851,7 +858,7 @@ class TestQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": Omit()}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -876,10 +883,32 @@ class TestQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": "42"}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
+
+    def test_proxy_environment_variables(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        # Test that the proxy environment variables are set correctly
+        monkeypatch.setenv("HTTPS_PROXY", "https://example.org")
+
+        client = DefaultHttpxClient()
+
+        mounts = tuple(client._mounts.items())
+        assert len(mounts) == 1
+        assert mounts[0][0].pattern == "https://"
+
+    @pytest.mark.filterwarnings("ignore:.*deprecated.*:DeprecationWarning")
+    def test_default_client_creation(self) -> None:
+        # Ensure that the client can be initialized without any exceptions
+        DefaultHttpxClient(
+            verify=True,
+            cert=None,
+            trust_env=True,
+            http1=True,
+            http2=False,
+            limits=httpx.Limits(max_connections=100, max_keepalive_connections=20),
+        )
 
     @pytest.mark.respx(base_url=base_url)
     def test_follow_redirects(self, respx_mock: MockRouter) -> None:
@@ -1635,7 +1664,7 @@ class TestAsyncQanapi:
             await self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -1652,7 +1681,7 @@ class TestAsyncQanapi:
             await self.client.post(
                 "/auth/login",
                 body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret123"), AuthLoginParams)
+                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
                 ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
@@ -1687,7 +1716,7 @@ class TestAsyncQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(email="valid@email.com", password="secret123")
+        response = await client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1713,7 +1742,7 @@ class TestAsyncQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = await client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": Omit()}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1739,7 +1768,7 @@ class TestAsyncQanapi:
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
         response = await client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret123", extra_headers={"x-stainless-retry-count": "42"}
+            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -1788,6 +1817,28 @@ class TestAsyncQanapi:
                     raise AssertionError("calling get_platform using asyncify resulted in a hung process")
 
                 time.sleep(0.1)
+
+    async def test_proxy_environment_variables(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        # Test that the proxy environment variables are set correctly
+        monkeypatch.setenv("HTTPS_PROXY", "https://example.org")
+
+        client = DefaultAsyncHttpxClient()
+
+        mounts = tuple(client._mounts.items())
+        assert len(mounts) == 1
+        assert mounts[0][0].pattern == "https://"
+
+    @pytest.mark.filterwarnings("ignore:.*deprecated.*:DeprecationWarning")
+    async def test_default_client_creation(self) -> None:
+        # Ensure that the client can be initialized without any exceptions
+        DefaultAsyncHttpxClient(
+            verify=True,
+            cert=None,
+            trust_env=True,
+            http1=True,
+            http2=False,
+            limits=httpx.Limits(max_connections=100, max_keepalive_connections=20),
+        )
 
     @pytest.mark.respx(base_url=base_url)
     async def test_follow_redirects(self, respx_mock: MockRouter) -> None:

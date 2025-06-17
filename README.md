@@ -34,7 +34,7 @@ client = Qanapi(
 
 response = client.auth.login(
     email="valid@email.com",
-    password="secret123",
+    password="secret1234",
 )
 print(response.access_token)
 ```
@@ -62,7 +62,7 @@ client = AsyncQanapi(
 async def main() -> None:
     response = await client.auth.login(
         email="valid@email.com",
-        password="secret123",
+        password="secret1234",
     )
     print(response.access_token)
 
@@ -119,7 +119,7 @@ client = Qanapi(
 try:
     client.auth.login(
         email="valid@email.com",
-        password="secret123",
+        password="secret1234",
     )
 except qanapi.APIConnectionError as e:
     print("The server could not be reached")
@@ -166,7 +166,7 @@ client = Qanapi(
 # Or, configure per-request:
 client.with_options(max_retries=5).auth.login(
     email="valid@email.com",
-    password="secret123",
+    password="secret1234",
 )
 ```
 
@@ -194,7 +194,7 @@ client = Qanapi(
 # Override per-request:
 client.with_options(timeout=5.0).auth.login(
     email="valid@email.com",
-    password="secret123",
+    password="secret1234",
 )
 ```
 
@@ -240,7 +240,7 @@ client = Qanapi(
 )
 response = client.auth.with_raw_response.login(
     email="valid@email.com",
-    password="secret123",
+    password="secret1234",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -261,7 +261,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 ```python
 with client.auth.with_streaming_response.login(
     email="valid@email.com",
-    password="secret123",
+    password="secret1234",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
