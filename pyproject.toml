@@ -1,6 +1,6 @@
 [project]
 name = "qanapi"
-version = "1.5.0"
+version = "1.5.1"
 description = "The official Python library for the qanapi API"
 dynamic = ["readme"]
 license = "Apache-2.0"
