@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 (2025-06-17)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **api:** update via SDK Studio ([f29fb3b](https://github.com/qanapi/qanapi-sdk-python/commit/f29fb3b6d8c1bdfd4a6c7a7b735e96e02a886677))
+
 ## 1.2.0 (2025-06-17)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.1.0...v1.2.0)
