@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.5.2 (2025-06-18)
+
+Full Changelog: [v1.5.1...v1.5.2](https://github.com/qanapi/qanapi-sdk-python/compare/v1.5.1...v1.5.2)
+
+### Bug Fixes
+
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([66f6b2c](https://github.com/qanapi/qanapi-sdk-python/commit/66f6b2c0377f3c538d12a574c3d52db94730d2bc))
+
+
+### Chores
+
+* **readme:** update badges ([dfebeef](https://github.com/qanapi/qanapi-sdk-python/commit/dfebeefd9171a908969377e73b33116067c26100))
+
 ## 1.5.1 (2025-06-17)
 
 Full Changelog: [v1.5.0...v1.5.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.5.0...v1.5.1)
