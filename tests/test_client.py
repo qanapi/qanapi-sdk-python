@@ -23,9 +23,7 @@ from pydantic import ValidationError
 
 from qanapi import Qanapi, AsyncQanapi, APIResponseValidationError
 from qanapi._types import Omit
-from qanapi._utils import maybe_transform
 from qanapi._models import BaseModel, FinalRequestOptions
-from qanapi._constants import RAW_RESPONSE_HEADER
 from qanapi._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from qanapi._base_client import (
     DEFAULT_TIMEOUT,
@@ -35,7 +33,6 @@ from qanapi._base_client import (
     DefaultAsyncHttpxClient,
     make_request_options,
 )
-from qanapi.types.auth_login_params import AuthLoginParams
 
 from .utils import update_env
 
@@ -775,36 +772,21 @@ class TestQanapi:
 
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Qanapi) -> None:
         respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            self.client.post(
-                "/auth/login",
-                body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            client.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Qanapi) -> None:
         respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            self.client.post(
-                "/auth/login",
-                body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            client.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -1657,36 +1639,25 @@ class TestAsyncQanapi:
 
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncQanapi) -> None:
         respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await self.client.post(
-                "/auth/login",
-                body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            await async_client.auth.with_streaming_response.login(
+                email="valid@email.com", password="secret1234"
+            ).__aenter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncQanapi) -> None:
         respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await self.client.post(
-                "/auth/login",
-                body=cast(
-                    object, maybe_transform(dict(email="valid@email.com", password="secret1234"), AuthLoginParams)
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            await async_client.auth.with_streaming_response.login(
+                email="valid@email.com", password="secret1234"
+            ).__aenter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
