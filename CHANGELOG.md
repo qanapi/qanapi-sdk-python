@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.1 (2025-06-19)
+
+Full Changelog: [v1.6.0...v1.6.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.6.0...v1.6.1)
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([bfd5bc1](https://github.com/qanapi/qanapi-sdk-python/commit/bfd5bc102f895ce18c41a226f2e2e08831c1290c))
+
 ## 1.6.0 (2025-06-18)
 
 Full Changelog: [v1.5.4...v1.6.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.5.4...v1.6.0)
