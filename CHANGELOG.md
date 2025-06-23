@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.0 (2025-06-21)
+
+Full Changelog: [v1.6.1...v1.7.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.6.1...v1.7.0)
+
+### Features
+
+* **client:** add support for aiohttp ([2eed6ca](https://github.com/qanapi/qanapi-sdk-python/commit/2eed6cab33fa770b3f2489ce4e5c872a64d28a8d))
+
 ## 1.6.1 (2025-06-19)
 
 Full Changelog: [v1.6.0...v1.6.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.6.0...v1.6.1)
