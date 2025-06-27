@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.7.1 (2025-06-27)
+
+Full Changelog: [v1.7.0...v1.7.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.0...v1.7.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([8dc138f](https://github.com/qanapi/qanapi-sdk-python/commit/8dc138f411b91f94037d5806554c42dba8c7d57e))
+
+
+### Chores
+
+* **tests:** skip some failing tests on the latest python versions ([89b3472](https://github.com/qanapi/qanapi-sdk-python/commit/89b3472ce0b2ffc82f8b644e9a8f04621a4794ea))
+
 ## 1.7.0 (2025-06-21)
 
 Full Changelog: [v1.6.1...v1.7.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.6.1...v1.7.0)
