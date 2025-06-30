@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.7.2 (2025-06-30)
+
+Full Changelog: [v1.7.1...v1.7.2](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.1...v1.7.2)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([545c36c](https://github.com/qanapi/qanapi-sdk-python/commit/545c36c50372857194a604b6fd5772cce3131a57))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([dcbb444](https://github.com/qanapi/qanapi-sdk-python/commit/dcbb444243b83e47f73e2e2e4764f8b4cfb28f62))
+
 ## 1.7.1 (2025-06-27)
 
 Full Changelog: [v1.7.0...v1.7.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.0...v1.7.1)
