@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.3 (2025-07-02)
+
+Full Changelog: [v1.7.2...v1.7.3](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.2...v1.7.3)
+
+### Chores
+
+* **ci:** change upload type ([b68336d](https://github.com/qanapi/qanapi-sdk-python/commit/b68336dc68070062e342a7e224608dc0b77dac6b))
+
 ## 1.7.2 (2025-06-30)
 
 Full Changelog: [v1.7.1...v1.7.2](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.1...v1.7.2)
