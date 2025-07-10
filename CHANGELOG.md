@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.7.3 (2025-07-10)
+
+Full Changelog: [v1.7.2...v1.7.3](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.2...v1.7.3)
+
+### Bug Fixes
+
+* **parsing:** correctly handle nested discriminated unions ([93abc4f](https://github.com/qanapi/qanapi-sdk-python/commit/93abc4fd5554223264ad62727f75aff90856b410))
+
+
+### Chores
+
+* **ci:** change upload type ([b68336d](https://github.com/qanapi/qanapi-sdk-python/commit/b68336dc68070062e342a7e224608dc0b77dac6b))
+* **internal:** bump pinned h11 dep ([9ea9291](https://github.com/qanapi/qanapi-sdk-python/commit/9ea92914f2ea9b40dfd1e024cec2db4971c4f5be))
+* **internal:** codegen related update ([c092f11](https://github.com/qanapi/qanapi-sdk-python/commit/c092f1133ca310bcbc72af6feba436893f3abab9))
+* **package:** mark python 3.13 as supported ([675e911](https://github.com/qanapi/qanapi-sdk-python/commit/675e911cd59df3f6eed5b5300ddb0502eed10364))
+
 ## 1.7.2 (2025-06-30)
 
 Full Changelog: [v1.7.1...v1.7.2](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.1...v1.7.2)
