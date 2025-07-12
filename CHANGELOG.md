@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.7.4 (2025-07-12)
+
+Full Changelog: [v1.7.3...v1.7.4](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.3...v1.7.4)
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([af90a8d](https://github.com/qanapi/qanapi-sdk-python/commit/af90a8daa7b3785cd4d3e19d8d2794a2249f5547))
+
+
+### Chores
+
+* **readme:** fix version rendering on pypi ([fd5f07b](https://github.com/qanapi/qanapi-sdk-python/commit/fd5f07b58eae6633eccbe9b06217d3ad508e4e7d))
+
 ## 1.7.3 (2025-07-10)
 
 Full Changelog: [v1.7.2...v1.7.3](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.2...v1.7.3)
