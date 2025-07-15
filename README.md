@@ -87,7 +87,6 @@ pip install qanapi[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from qanapi import DefaultAioHttpClient
 from qanapi import AsyncQanapi
@@ -96,7 +95,7 @@ from qanapi import AsyncQanapi
 async def main() -> None:
     async with AsyncQanapi(
         subdomain="My-Subdomain",
-        api_key=os.environ.get("QANAPI_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.auth.login(
