@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0 (2025-07-22)
+
+Full Changelog: [v1.7.4...v1.8.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.4...v1.8.0)
+
+### Features
+
+* clean up environment call outs ([08b0373](https://github.com/qanapi/qanapi-sdk-python/commit/08b0373c2e02011e02efe30e9744d2325efd9426))
+
+
+### Bug Fixes
+
+* **parsing:** ignore empty metadata ([fa708c8](https://github.com/qanapi/qanapi-sdk-python/commit/fa708c8c4dc5992968be85990cc4152bf685029a))
+
 ## 1.7.4 (2025-07-12)
 
 Full Changelog: [v1.7.3...v1.7.4](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.3...v1.7.4)
