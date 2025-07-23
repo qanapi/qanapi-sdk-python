@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.1 (2025-07-23)
+
+Full Changelog: [v1.8.0...v1.8.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.8.0...v1.8.1)
+
+### Bug Fixes
+
+* **parsing:** parse extra field types ([80a6458](https://github.com/qanapi/qanapi-sdk-python/commit/80a645806393c373e90835920d32c694b252cb8c))
+
 ## 1.8.0 (2025-07-22)
 
 Full Changelog: [v1.7.4...v1.8.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.7.4...v1.8.0)
