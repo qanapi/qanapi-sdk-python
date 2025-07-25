@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.2 (2025-07-25)
+
+Full Changelog: [v1.8.1...v1.8.2](https://github.com/qanapi/qanapi-sdk-python/compare/v1.8.1...v1.8.2)
+
+### Chores
+
+* **project:** add settings file for vscode ([e1e08f5](https://github.com/qanapi/qanapi-sdk-python/commit/e1e08f58e5171802adf3fa55e7043cd0c92a0fe5))
+
 ## 1.8.1 (2025-07-23)
 
 Full Changelog: [v1.8.0...v1.8.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.8.0...v1.8.1)
