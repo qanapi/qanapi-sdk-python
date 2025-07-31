@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.9.0 (2025-07-31)
+
+Full Changelog: [v1.8.1...v1.9.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.8.1...v1.9.0)
+
+### Features
+
+* **client:** support file upload requests ([5d04380](https://github.com/qanapi/qanapi-sdk-python/commit/5d04380fda8d0a47206d3acbc7ac4b7aebf6fea9))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([e1e08f5](https://github.com/qanapi/qanapi-sdk-python/commit/e1e08f58e5171802adf3fa55e7043cd0c92a0fe5))
+
 ## 1.8.1 (2025-07-23)
 
 Full Changelog: [v1.8.0...v1.8.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.8.0...v1.8.1)
