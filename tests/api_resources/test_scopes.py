@@ -23,7 +23,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestScopes:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Qanapi) -> None:
         scope = client.scopes.create(
@@ -32,7 +32,7 @@ class TestScopes:
         )
         assert_matches_type(ScopeCreateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Qanapi) -> None:
         response = client.scopes.with_raw_response.create(
@@ -45,7 +45,7 @@ class TestScopes:
         scope = response.parse()
         assert_matches_type(ScopeCreateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Qanapi) -> None:
         with client.scopes.with_streaming_response.create(
@@ -60,7 +60,7 @@ class TestScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Qanapi) -> None:
         scope = client.scopes.retrieve(
@@ -68,7 +68,7 @@ class TestScopes:
         )
         assert_matches_type(ScopeRetrieveResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Qanapi) -> None:
         response = client.scopes.with_raw_response.retrieve(
@@ -80,7 +80,7 @@ class TestScopes:
         scope = response.parse()
         assert_matches_type(ScopeRetrieveResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Qanapi) -> None:
         with client.scopes.with_streaming_response.retrieve(
@@ -94,7 +94,7 @@ class TestScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Qanapi) -> None:
         scope = client.scopes.update(
@@ -102,7 +102,7 @@ class TestScopes:
         )
         assert_matches_type(ScopeUpdateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Qanapi) -> None:
         scope = client.scopes.update(
@@ -112,7 +112,7 @@ class TestScopes:
         )
         assert_matches_type(ScopeUpdateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Qanapi) -> None:
         response = client.scopes.with_raw_response.update(
@@ -124,7 +124,7 @@ class TestScopes:
         scope = response.parse()
         assert_matches_type(ScopeUpdateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Qanapi) -> None:
         with client.scopes.with_streaming_response.update(
@@ -138,13 +138,13 @@ class TestScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Qanapi) -> None:
         scope = client.scopes.list()
         assert_matches_type(ScopeListResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Qanapi) -> None:
         response = client.scopes.with_raw_response.list()
@@ -154,7 +154,7 @@ class TestScopes:
         scope = response.parse()
         assert_matches_type(ScopeListResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Qanapi) -> None:
         with client.scopes.with_streaming_response.list() as response:
@@ -166,7 +166,7 @@ class TestScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Qanapi) -> None:
         scope = client.scopes.delete(
@@ -174,7 +174,7 @@ class TestScopes:
         )
         assert_matches_type(ScopeDeleteResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Qanapi) -> None:
         response = client.scopes.with_raw_response.delete(
@@ -186,7 +186,7 @@ class TestScopes:
         scope = response.parse()
         assert_matches_type(ScopeDeleteResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Qanapi) -> None:
         with client.scopes.with_streaming_response.delete(
@@ -206,7 +206,7 @@ class TestAsyncScopes:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncQanapi) -> None:
         scope = await async_client.scopes.create(
@@ -215,7 +215,7 @@ class TestAsyncScopes:
         )
         assert_matches_type(ScopeCreateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncQanapi) -> None:
         response = await async_client.scopes.with_raw_response.create(
@@ -228,7 +228,7 @@ class TestAsyncScopes:
         scope = await response.parse()
         assert_matches_type(ScopeCreateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncQanapi) -> None:
         async with async_client.scopes.with_streaming_response.create(
@@ -243,7 +243,7 @@ class TestAsyncScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncQanapi) -> None:
         scope = await async_client.scopes.retrieve(
@@ -251,7 +251,7 @@ class TestAsyncScopes:
         )
         assert_matches_type(ScopeRetrieveResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncQanapi) -> None:
         response = await async_client.scopes.with_raw_response.retrieve(
@@ -263,7 +263,7 @@ class TestAsyncScopes:
         scope = await response.parse()
         assert_matches_type(ScopeRetrieveResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncQanapi) -> None:
         async with async_client.scopes.with_streaming_response.retrieve(
@@ -277,7 +277,7 @@ class TestAsyncScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncQanapi) -> None:
         scope = await async_client.scopes.update(
@@ -285,7 +285,7 @@ class TestAsyncScopes:
         )
         assert_matches_type(ScopeUpdateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncQanapi) -> None:
         scope = await async_client.scopes.update(
@@ -295,7 +295,7 @@ class TestAsyncScopes:
         )
         assert_matches_type(ScopeUpdateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncQanapi) -> None:
         response = await async_client.scopes.with_raw_response.update(
@@ -307,7 +307,7 @@ class TestAsyncScopes:
         scope = await response.parse()
         assert_matches_type(ScopeUpdateResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncQanapi) -> None:
         async with async_client.scopes.with_streaming_response.update(
@@ -321,13 +321,13 @@ class TestAsyncScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncQanapi) -> None:
         scope = await async_client.scopes.list()
         assert_matches_type(ScopeListResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncQanapi) -> None:
         response = await async_client.scopes.with_raw_response.list()
@@ -337,7 +337,7 @@ class TestAsyncScopes:
         scope = await response.parse()
         assert_matches_type(ScopeListResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncQanapi) -> None:
         async with async_client.scopes.with_streaming_response.list() as response:
@@ -349,7 +349,7 @@ class TestAsyncScopes:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncQanapi) -> None:
         scope = await async_client.scopes.delete(
@@ -357,7 +357,7 @@ class TestAsyncScopes:
         )
         assert_matches_type(ScopeDeleteResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncQanapi) -> None:
         response = await async_client.scopes.with_raw_response.delete(
@@ -369,7 +369,7 @@ class TestAsyncScopes:
         scope = await response.parse()
         assert_matches_type(ScopeDeleteResponse, scope, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncQanapi) -> None:
         async with async_client.scopes.with_streaming_response.delete(
