@@ -23,7 +23,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestAuth:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_login(self, client: Qanapi) -> None:
         auth = client.auth.login(
@@ -32,7 +32,7 @@ class TestAuth:
         )
         assert_matches_type(AuthLoginResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_login(self, client: Qanapi) -> None:
         response = client.auth.with_raw_response.login(
@@ -45,7 +45,7 @@ class TestAuth:
         auth = response.parse()
         assert_matches_type(AuthLoginResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_login(self, client: Qanapi) -> None:
         with client.auth.with_streaming_response.login(
@@ -60,13 +60,13 @@ class TestAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_logout(self, client: Qanapi) -> None:
         auth = client.auth.logout()
         assert_matches_type(AuthLogoutResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_logout(self, client: Qanapi) -> None:
         response = client.auth.with_raw_response.logout()
@@ -76,7 +76,7 @@ class TestAuth:
         auth = response.parse()
         assert_matches_type(AuthLogoutResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_logout(self, client: Qanapi) -> None:
         with client.auth.with_streaming_response.logout() as response:
@@ -88,13 +88,13 @@ class TestAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_refresh_token(self, client: Qanapi) -> None:
         auth = client.auth.refresh_token()
         assert_matches_type(AuthRefreshTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_refresh_token(self, client: Qanapi) -> None:
         response = client.auth.with_raw_response.refresh_token()
@@ -104,7 +104,7 @@ class TestAuth:
         auth = response.parse()
         assert_matches_type(AuthRefreshTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_refresh_token(self, client: Qanapi) -> None:
         with client.auth.with_streaming_response.refresh_token() as response:
@@ -116,13 +116,13 @@ class TestAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_user_details(self, client: Qanapi) -> None:
         auth = client.auth.retrieve_user_details()
         assert_matches_type(AuthRetrieveUserDetailsResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve_user_details(self, client: Qanapi) -> None:
         response = client.auth.with_raw_response.retrieve_user_details()
@@ -132,7 +132,7 @@ class TestAuth:
         auth = response.parse()
         assert_matches_type(AuthRetrieveUserDetailsResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve_user_details(self, client: Qanapi) -> None:
         with client.auth.with_streaming_response.retrieve_user_details() as response:
@@ -144,13 +144,13 @@ class TestAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_revoke_token(self, client: Qanapi) -> None:
         auth = client.auth.revoke_token()
         assert_matches_type(AuthRevokeTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_revoke_token(self, client: Qanapi) -> None:
         response = client.auth.with_raw_response.revoke_token()
@@ -160,7 +160,7 @@ class TestAuth:
         auth = response.parse()
         assert_matches_type(AuthRevokeTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_revoke_token(self, client: Qanapi) -> None:
         with client.auth.with_streaming_response.revoke_token() as response:
@@ -178,7 +178,7 @@ class TestAsyncAuth:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_login(self, async_client: AsyncQanapi) -> None:
         auth = await async_client.auth.login(
@@ -187,7 +187,7 @@ class TestAsyncAuth:
         )
         assert_matches_type(AuthLoginResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_login(self, async_client: AsyncQanapi) -> None:
         response = await async_client.auth.with_raw_response.login(
@@ -200,7 +200,7 @@ class TestAsyncAuth:
         auth = await response.parse()
         assert_matches_type(AuthLoginResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_login(self, async_client: AsyncQanapi) -> None:
         async with async_client.auth.with_streaming_response.login(
@@ -215,13 +215,13 @@ class TestAsyncAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_logout(self, async_client: AsyncQanapi) -> None:
         auth = await async_client.auth.logout()
         assert_matches_type(AuthLogoutResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_logout(self, async_client: AsyncQanapi) -> None:
         response = await async_client.auth.with_raw_response.logout()
@@ -231,7 +231,7 @@ class TestAsyncAuth:
         auth = await response.parse()
         assert_matches_type(AuthLogoutResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_logout(self, async_client: AsyncQanapi) -> None:
         async with async_client.auth.with_streaming_response.logout() as response:
@@ -243,13 +243,13 @@ class TestAsyncAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_refresh_token(self, async_client: AsyncQanapi) -> None:
         auth = await async_client.auth.refresh_token()
         assert_matches_type(AuthRefreshTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_refresh_token(self, async_client: AsyncQanapi) -> None:
         response = await async_client.auth.with_raw_response.refresh_token()
@@ -259,7 +259,7 @@ class TestAsyncAuth:
         auth = await response.parse()
         assert_matches_type(AuthRefreshTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_refresh_token(self, async_client: AsyncQanapi) -> None:
         async with async_client.auth.with_streaming_response.refresh_token() as response:
@@ -271,13 +271,13 @@ class TestAsyncAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_user_details(self, async_client: AsyncQanapi) -> None:
         auth = await async_client.auth.retrieve_user_details()
         assert_matches_type(AuthRetrieveUserDetailsResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve_user_details(self, async_client: AsyncQanapi) -> None:
         response = await async_client.auth.with_raw_response.retrieve_user_details()
@@ -287,7 +287,7 @@ class TestAsyncAuth:
         auth = await response.parse()
         assert_matches_type(AuthRetrieveUserDetailsResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve_user_details(self, async_client: AsyncQanapi) -> None:
         async with async_client.auth.with_streaming_response.retrieve_user_details() as response:
@@ -299,13 +299,13 @@ class TestAsyncAuth:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_revoke_token(self, async_client: AsyncQanapi) -> None:
         auth = await async_client.auth.revoke_token()
         assert_matches_type(AuthRevokeTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_revoke_token(self, async_client: AsyncQanapi) -> None:
         response = await async_client.auth.with_raw_response.revoke_token()
@@ -315,7 +315,7 @@ class TestAsyncAuth:
         auth = await response.parse()
         assert_matches_type(AuthRevokeTokenResponse, auth, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_revoke_token(self, async_client: AsyncQanapi) -> None:
         async with async_client.auth.with_streaming_response.revoke_token() as response:

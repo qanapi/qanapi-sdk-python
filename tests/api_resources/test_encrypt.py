@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestEncrypt:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_encrypt_data(self, client: Qanapi) -> None:
         encrypt = client.encrypt.encrypt_data(
@@ -25,7 +25,7 @@ class TestEncrypt:
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_encrypt_data_with_all_params(self, client: Qanapi) -> None:
         encrypt = client.encrypt.encrypt_data(
@@ -40,7 +40,7 @@ class TestEncrypt:
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_encrypt_data(self, client: Qanapi) -> None:
         response = client.encrypt.with_raw_response.encrypt_data(
@@ -52,7 +52,7 @@ class TestEncrypt:
         encrypt = response.parse()
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_encrypt_data(self, client: Qanapi) -> None:
         with client.encrypt.with_streaming_response.encrypt_data(
@@ -72,7 +72,7 @@ class TestAsyncEncrypt:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_encrypt_data(self, async_client: AsyncQanapi) -> None:
         encrypt = await async_client.encrypt.encrypt_data(
@@ -80,7 +80,7 @@ class TestAsyncEncrypt:
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_encrypt_data_with_all_params(self, async_client: AsyncQanapi) -> None:
         encrypt = await async_client.encrypt.encrypt_data(
@@ -95,7 +95,7 @@ class TestAsyncEncrypt:
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_encrypt_data(self, async_client: AsyncQanapi) -> None:
         response = await async_client.encrypt.with_raw_response.encrypt_data(
@@ -107,7 +107,7 @@ class TestAsyncEncrypt:
         encrypt = await response.parse()
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_encrypt_data(self, async_client: AsyncQanapi) -> None:
         async with async_client.encrypt.with_streaming_response.encrypt_data(
