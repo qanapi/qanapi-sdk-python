@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.10.0 (2025-11-22)
+
+Full Changelog: [v1.9.0...v1.10.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.9.0...v1.10.0)
+
+### Features
+
+* improve future compat with pydantic v3 ([3bbf3d8](https://github.com/qanapi/qanapi-sdk-python/commit/3bbf3d8d7dd53adc2d36fd4ce033096443406b2b))
+* **types:** replace List[str] with SequenceNotStr in params ([5a96e5c](https://github.com/qanapi/qanapi-sdk-python/commit/5a96e5c5f35bbdbcdf6316aec60eb8b213a86545))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([ab606aa](https://github.com/qanapi/qanapi-sdk-python/commit/ab606aac379e0bfe9978f60ec78e10bd82d34890))
+* do not install brew dependencies in ./scripts/bootstrap by default ([12bda12](https://github.com/qanapi/qanapi-sdk-python/commit/12bda12eda181d2e03d95de38597cd23504614b1))
+* **internal:** add Sequence related utils ([12dc952](https://github.com/qanapi/qanapi-sdk-python/commit/12dc9522a50b1b5b74ec71bc92f09d642e3df098))
+* **internal:** codegen related update ([b8d4216](https://github.com/qanapi/qanapi-sdk-python/commit/b8d42165f1be8be4e5295e3c2ac6ed4427b638cc))
+* **internal:** codegen related update ([e46841e](https://github.com/qanapi/qanapi-sdk-python/commit/e46841e9092518578ef0017b78902fb4d7afc8ad))
+* **internal:** codegen related update ([f918203](https://github.com/qanapi/qanapi-sdk-python/commit/f91820347efe842ec60c5e4da8c4a185ddd60f67))
+* **internal:** codegen related update ([d3c4440](https://github.com/qanapi/qanapi-sdk-python/commit/d3c4440f69ef175f80814c9fcec805b2bcd6ddc6))
+* **internal:** codegen related update ([5de4978](https://github.com/qanapi/qanapi-sdk-python/commit/5de49782dd85e79f47621aac7a26a2ed66e260c8))
+* **internal:** codegen related update ([ccdfb11](https://github.com/qanapi/qanapi-sdk-python/commit/ccdfb11c4406556a4e568b9d9b2a6cce87016ac1))
+* **internal:** detect missing future annotations with ruff ([982db62](https://github.com/qanapi/qanapi-sdk-python/commit/982db623253cd419b2bd3350e6d711ee24a7ca6b))
+* **internal:** move mypy configurations to `pyproject.toml` file ([5a00fee](https://github.com/qanapi/qanapi-sdk-python/commit/5a00fee6aecd501e6cca60fb20c77bf4750925c2))
+* **internal:** update pydantic dependency ([09f829d](https://github.com/qanapi/qanapi-sdk-python/commit/09f829dcaf7cff7418108f8cf13d2cd7f6895a98))
+* **internal:** update pyright exclude list ([b1016cf](https://github.com/qanapi/qanapi-sdk-python/commit/b1016cfb18b21cbabed155e064c377d8efac3e46))
+* **tests:** simplify `get_platform` test ([390c677](https://github.com/qanapi/qanapi-sdk-python/commit/390c677490d1be1231e6bd0be4007263e3237436))
+* **types:** change optional parameter type from NotGiven to Omit ([af3061b](https://github.com/qanapi/qanapi-sdk-python/commit/af3061b3d2903222224f590398581aa22e49e04f))
+
 ## 1.9.0 (2025-08-27)
 
 Full Changelog: [v1.8.1...v1.9.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.8.1...v1.9.0)
