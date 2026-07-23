@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.11.0 (2026-07-23)
+
+Full Changelog: [v1.10.0...v1.11.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.10.0...v1.11.0)
+
+### Features
+
+* **api:** remove scopes entity ([cc7d8f5](https://github.com/qanapi/qanapi-sdk-python/commit/cc7d8f51502041f5fde1f3c9bb36f144f7234b4b))
+
+
+### Chores
+
+* remove custom code ([391c786](https://github.com/qanapi/qanapi-sdk-python/commit/391c786943784a52bccaf8d124494eb3a134211e))
+
 ## 1.10.0 (2025-11-22)
 
 Full Changelog: [v1.9.0...v1.10.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.9.0...v1.10.0)
