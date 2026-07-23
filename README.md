@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-The REST API documentation can be found on [www.qanapi.com](https://www.qanapi.com/docs). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.qanapi.com](https://docs.qanapi.com/). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -87,6 +87,7 @@ pip install qanapi[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from qanapi import DefaultAioHttpClient
 from qanapi import AsyncQanapi
@@ -95,7 +96,7 @@ from qanapi import AsyncQanapi
 async def main() -> None:
     async with AsyncQanapi(
         subdomain="My-Subdomain",
-        api_key="My API Key",
+        api_key=os.environ.get("QANAPI_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.auth.login(
