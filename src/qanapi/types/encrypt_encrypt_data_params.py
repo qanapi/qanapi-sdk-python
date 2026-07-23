@@ -48,6 +48,8 @@ class Access(TypedDict, total=False):
 
 
 class Attributes(TypedDict, total=False):
+    """Optional metadata describing the data's context."""
+
     classification: Literal["public", "internal", "confidential", "restricted"]
 
     owner: str

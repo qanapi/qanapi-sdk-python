@@ -8,14 +8,6 @@ from .auth import (
     AuthResourceWithStreamingResponse,
     AsyncAuthResourceWithStreamingResponse,
 )
-from .scopes import (
-    ScopesResource,
-    AsyncScopesResource,
-    ScopesResourceWithRawResponse,
-    AsyncScopesResourceWithRawResponse,
-    ScopesResourceWithStreamingResponse,
-    AsyncScopesResourceWithStreamingResponse,
-)
 from .decrypt import (
     DecryptResource,
     AsyncDecryptResource,
@@ -66,10 +58,4 @@ __all__ = [
     "AsyncAPIKeysResourceWithRawResponse",
     "APIKeysResourceWithStreamingResponse",
     "AsyncAPIKeysResourceWithStreamingResponse",
-    "ScopesResource",
-    "AsyncScopesResource",
-    "ScopesResourceWithRawResponse",
-    "AsyncScopesResourceWithRawResponse",
-    "ScopesResourceWithStreamingResponse",
-    "AsyncScopesResourceWithStreamingResponse",
 ]
