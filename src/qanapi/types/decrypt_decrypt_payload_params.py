@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable
+from typing import Dict, Union, Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["DecryptDecryptPayloadParams"]
@@ -18,7 +19,7 @@ class DecryptDecryptPayloadParams(TypedDict, total=False):
     - Decryption is selective if `sensitiveFields` is provided.
     """
 
-    sensitive_fields: Annotated[List[str], PropertyInfo(alias="sensitiveFields")]
+    sensitive_fields: Annotated[SequenceNotStr[str], PropertyInfo(alias="sensitiveFields")]
     """Laravel-style dot-notated paths to fields to decrypt.
 
     - Same syntax and behavior as in EncryptRequest.

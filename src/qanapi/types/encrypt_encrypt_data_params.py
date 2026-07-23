@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable
+from typing import Dict, Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EncryptEncryptDataParams", "Access", "Attributes"]
@@ -24,7 +25,7 @@ class EncryptEncryptDataParams(TypedDict, total=False):
     attributes: Attributes
     """Optional metadata describing the data's context."""
 
-    sensitive_fields: Annotated[List[str], PropertyInfo(alias="sensitiveFields")]
+    sensitive_fields: Annotated[SequenceNotStr[str], PropertyInfo(alias="sensitiveFields")]
     """Laravel-style dot-notated paths to fields that should be encrypted.
 
     Supports:
@@ -42,7 +43,7 @@ class EncryptEncryptDataParams(TypedDict, total=False):
 
 
 class Access(TypedDict, total=False):
-    acl: List[str]
+    acl: SequenceNotStr[str]
     """Access control list — list of user roles authorized to decrypt this data."""
 
 
@@ -51,4 +52,4 @@ class Attributes(TypedDict, total=False):
 
     owner: str
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
