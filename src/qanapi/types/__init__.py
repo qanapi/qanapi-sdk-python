@@ -4,16 +4,9 @@ from __future__ import annotations
 
 from .auth_login_params import AuthLoginParams as AuthLoginParams
 from .auth_login_response import AuthLoginResponse as AuthLoginResponse
-from .scope_create_params import ScopeCreateParams as ScopeCreateParams
-from .scope_list_response import ScopeListResponse as ScopeListResponse
-from .scope_update_params import ScopeUpdateParams as ScopeUpdateParams
 from .auth_logout_response import AuthLogoutResponse as AuthLogoutResponse
-from .scope_create_response import ScopeCreateResponse as ScopeCreateResponse
-from .scope_delete_response import ScopeDeleteResponse as ScopeDeleteResponse
-from .scope_update_response import ScopeUpdateResponse as ScopeUpdateResponse
 from .api_key_revoke_response import APIKeyRevokeResponse as APIKeyRevokeResponse
 from .api_key_rotate_response import APIKeyRotateResponse as APIKeyRotateResponse
-from .scope_retrieve_response import ScopeRetrieveResponse as ScopeRetrieveResponse
 from .auth_revoke_token_response import AuthRevokeTokenResponse as AuthRevokeTokenResponse
 from .auth_refresh_token_response import AuthRefreshTokenResponse as AuthRefreshTokenResponse
 from .encrypt_encrypt_data_params import EncryptEncryptDataParams as EncryptEncryptDataParams

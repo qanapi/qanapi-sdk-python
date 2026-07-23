@@ -4,35 +4,24 @@ from __future__ import annotations
 
 import httpx
 
-from .scopes import (
-    ScopesResource,
-    AsyncScopesResource,
-    ScopesResourceWithRawResponse,
-    AsyncScopesResourceWithRawResponse,
-    ScopesResourceWithStreamingResponse,
-    AsyncScopesResourceWithStreamingResponse,
-)
-from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .._types import Body, Query, Headers, NotGiven, not_given
+from .._utils import path_template
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.api_key_revoke_response import APIKeyRevokeResponse
-from ...types.api_key_rotate_response import APIKeyRotateResponse
+from .._base_client import make_request_options
+from ..types.api_key_revoke_response import APIKeyRevokeResponse
+from ..types.api_key_rotate_response import APIKeyRotateResponse
 
 __all__ = ["APIKeysResource", "AsyncAPIKeysResource"]
 
 
 class APIKeysResource(SyncAPIResource):
-    @cached_property
-    def scopes(self) -> ScopesResource:
-        return ScopesResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> APIKeysResourceWithRawResponse:
         """
@@ -78,7 +67,7 @@ class APIKeysResource(SyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return self._patch(
-            f"/api-keys/{api_key}/revoke",
+            path_template("/api-keys/{api_key}/revoke", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -111,7 +100,7 @@ class APIKeysResource(SyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return self._patch(
-            f"/api-keys/{api_key}/rotate",
+            path_template("/api-keys/{api_key}/rotate", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -120,10 +109,6 @@ class APIKeysResource(SyncAPIResource):
 
 
 class AsyncAPIKeysResource(AsyncAPIResource):
-    @cached_property
-    def scopes(self) -> AsyncScopesResource:
-        return AsyncScopesResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> AsyncAPIKeysResourceWithRawResponse:
         """
@@ -169,7 +154,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return await self._patch(
-            f"/api-keys/{api_key}/revoke",
+            path_template("/api-keys/{api_key}/revoke", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -202,7 +187,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return await self._patch(
-            f"/api-keys/{api_key}/rotate",
+            path_template("/api-keys/{api_key}/rotate", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -221,10 +206,6 @@ class APIKeysResourceWithRawResponse:
             api_keys.rotate,
         )
 
-    @cached_property
-    def scopes(self) -> ScopesResourceWithRawResponse:
-        return ScopesResourceWithRawResponse(self._api_keys.scopes)
-
 
 class AsyncAPIKeysResourceWithRawResponse:
     def __init__(self, api_keys: AsyncAPIKeysResource) -> None:
@@ -236,10 +217,6 @@ class AsyncAPIKeysResourceWithRawResponse:
         self.rotate = async_to_raw_response_wrapper(
             api_keys.rotate,
         )
-
-    @cached_property
-    def scopes(self) -> AsyncScopesResourceWithRawResponse:
-        return AsyncScopesResourceWithRawResponse(self._api_keys.scopes)
 
 
 class APIKeysResourceWithStreamingResponse:
@@ -253,10 +230,6 @@ class APIKeysResourceWithStreamingResponse:
             api_keys.rotate,
         )
 
-    @cached_property
-    def scopes(self) -> ScopesResourceWithStreamingResponse:
-        return ScopesResourceWithStreamingResponse(self._api_keys.scopes)
-
 
 class AsyncAPIKeysResourceWithStreamingResponse:
     def __init__(self, api_keys: AsyncAPIKeysResource) -> None:
@@ -268,7 +241,3 @@ class AsyncAPIKeysResourceWithStreamingResponse:
         self.rotate = async_to_streamed_response_wrapper(
             api_keys.rotate,
         )
-
-    @cached_property
-    def scopes(self) -> AsyncScopesResourceWithStreamingResponse:
-        return AsyncScopesResourceWithStreamingResponse(self._api_keys.scopes)
