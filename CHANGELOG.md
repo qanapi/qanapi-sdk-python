@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.13.0 (2026-07-24)
+
+Full Changelog: [v1.12.0...v1.13.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.12.0...v1.13.0)
+
+### Features
+
+* **api:** set up pypi oidc ([5860096](https://github.com/qanapi/qanapi-sdk-python/commit/586009678fd8961e1cd98e42a72184900da17f93))
+
+
+### Chores
+
+* update SDK settings ([9009144](https://github.com/qanapi/qanapi-sdk-python/commit/9009144331b6e681a09a25425a531546cf14507e))
+
 ## 1.12.0 (2026-07-24)
 
 Full Changelog: [v1.11.0...v1.12.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.11.0...v1.12.0)
