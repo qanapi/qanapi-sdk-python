@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.13.1 (2026-07-24)
+
+Full Changelog: [v1.13.0...v1.13.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.13.0...v1.13.1)
+
+### Chores
+
+* update SDK settings ([1571144](https://github.com/qanapi/qanapi-sdk-python/commit/157114495e7be92529b16ea93ec2252ade4b69d5))
+
 ## 1.13.0 (2026-07-24)
 
 Full Changelog: [v1.12.0...v1.13.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.12.0...v1.13.0)
