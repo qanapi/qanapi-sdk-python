@@ -9,7 +9,7 @@ import pytest
 
 from qanapi import Qanapi, AsyncQanapi
 from tests.utils import assert_matches_type
-from qanapi.types import (
+from qanapi.types.v2 import (
     AuthLoginResponse,
     AuthLogoutResponse,
     AuthRevokeTokenResponse,
@@ -26,7 +26,7 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_login(self, client: Qanapi) -> None:
-        auth = client.auth.login(
+        auth = client.v2.auth.login(
             email="valid@email.com",
             password="secret1234",
         )
@@ -35,7 +35,7 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_login(self, client: Qanapi) -> None:
-        response = client.auth.with_raw_response.login(
+        response = client.v2.auth.with_raw_response.login(
             email="valid@email.com",
             password="secret1234",
         )
@@ -48,7 +48,7 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_login(self, client: Qanapi) -> None:
-        with client.auth.with_streaming_response.login(
+        with client.v2.auth.with_streaming_response.login(
             email="valid@email.com",
             password="secret1234",
         ) as response:
@@ -63,13 +63,13 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_logout(self, client: Qanapi) -> None:
-        auth = client.auth.logout()
+        auth = client.v2.auth.logout()
         assert_matches_type(AuthLogoutResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_logout(self, client: Qanapi) -> None:
-        response = client.auth.with_raw_response.logout()
+        response = client.v2.auth.with_raw_response.logout()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -79,7 +79,7 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_logout(self, client: Qanapi) -> None:
-        with client.auth.with_streaming_response.logout() as response:
+        with client.v2.auth.with_streaming_response.logout() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -91,13 +91,13 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_refresh_token(self, client: Qanapi) -> None:
-        auth = client.auth.refresh_token()
+        auth = client.v2.auth.refresh_token()
         assert_matches_type(AuthRefreshTokenResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_refresh_token(self, client: Qanapi) -> None:
-        response = client.auth.with_raw_response.refresh_token()
+        response = client.v2.auth.with_raw_response.refresh_token()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -107,7 +107,7 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_refresh_token(self, client: Qanapi) -> None:
-        with client.auth.with_streaming_response.refresh_token() as response:
+        with client.v2.auth.with_streaming_response.refresh_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -119,13 +119,13 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve_user_details(self, client: Qanapi) -> None:
-        auth = client.auth.retrieve_user_details()
+        auth = client.v2.auth.retrieve_user_details()
         assert_matches_type(AuthRetrieveUserDetailsResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve_user_details(self, client: Qanapi) -> None:
-        response = client.auth.with_raw_response.retrieve_user_details()
+        response = client.v2.auth.with_raw_response.retrieve_user_details()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -135,7 +135,7 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve_user_details(self, client: Qanapi) -> None:
-        with client.auth.with_streaming_response.retrieve_user_details() as response:
+        with client.v2.auth.with_streaming_response.retrieve_user_details() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -147,13 +147,13 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_revoke_token(self, client: Qanapi) -> None:
-        auth = client.auth.revoke_token()
+        auth = client.v2.auth.revoke_token()
         assert_matches_type(AuthRevokeTokenResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_revoke_token(self, client: Qanapi) -> None:
-        response = client.auth.with_raw_response.revoke_token()
+        response = client.v2.auth.with_raw_response.revoke_token()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -163,7 +163,7 @@ class TestAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_revoke_token(self, client: Qanapi) -> None:
-        with client.auth.with_streaming_response.revoke_token() as response:
+        with client.v2.auth.with_streaming_response.revoke_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -181,7 +181,7 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_login(self, async_client: AsyncQanapi) -> None:
-        auth = await async_client.auth.login(
+        auth = await async_client.v2.auth.login(
             email="valid@email.com",
             password="secret1234",
         )
@@ -190,7 +190,7 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_login(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.auth.with_raw_response.login(
+        response = await async_client.v2.auth.with_raw_response.login(
             email="valid@email.com",
             password="secret1234",
         )
@@ -203,7 +203,7 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_login(self, async_client: AsyncQanapi) -> None:
-        async with async_client.auth.with_streaming_response.login(
+        async with async_client.v2.auth.with_streaming_response.login(
             email="valid@email.com",
             password="secret1234",
         ) as response:
@@ -218,13 +218,13 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_logout(self, async_client: AsyncQanapi) -> None:
-        auth = await async_client.auth.logout()
+        auth = await async_client.v2.auth.logout()
         assert_matches_type(AuthLogoutResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_logout(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.auth.with_raw_response.logout()
+        response = await async_client.v2.auth.with_raw_response.logout()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -234,7 +234,7 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_logout(self, async_client: AsyncQanapi) -> None:
-        async with async_client.auth.with_streaming_response.logout() as response:
+        async with async_client.v2.auth.with_streaming_response.logout() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -246,13 +246,13 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_refresh_token(self, async_client: AsyncQanapi) -> None:
-        auth = await async_client.auth.refresh_token()
+        auth = await async_client.v2.auth.refresh_token()
         assert_matches_type(AuthRefreshTokenResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_refresh_token(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.auth.with_raw_response.refresh_token()
+        response = await async_client.v2.auth.with_raw_response.refresh_token()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -262,7 +262,7 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_refresh_token(self, async_client: AsyncQanapi) -> None:
-        async with async_client.auth.with_streaming_response.refresh_token() as response:
+        async with async_client.v2.auth.with_streaming_response.refresh_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -274,13 +274,13 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve_user_details(self, async_client: AsyncQanapi) -> None:
-        auth = await async_client.auth.retrieve_user_details()
+        auth = await async_client.v2.auth.retrieve_user_details()
         assert_matches_type(AuthRetrieveUserDetailsResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve_user_details(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.auth.with_raw_response.retrieve_user_details()
+        response = await async_client.v2.auth.with_raw_response.retrieve_user_details()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -290,7 +290,7 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve_user_details(self, async_client: AsyncQanapi) -> None:
-        async with async_client.auth.with_streaming_response.retrieve_user_details() as response:
+        async with async_client.v2.auth.with_streaming_response.retrieve_user_details() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -302,13 +302,13 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_revoke_token(self, async_client: AsyncQanapi) -> None:
-        auth = await async_client.auth.revoke_token()
+        auth = await async_client.v2.auth.revoke_token()
         assert_matches_type(AuthRevokeTokenResponse, auth, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_revoke_token(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.auth.with_raw_response.revoke_token()
+        response = await async_client.v2.auth.with_raw_response.revoke_token()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -318,7 +318,7 @@ class TestAsyncAuth:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_revoke_token(self, async_client: AsyncQanapi) -> None:
-        async with async_client.auth.with_streaming_response.revoke_token() as response:
+        async with async_client.v2.auth.with_streaming_response.revoke_token() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

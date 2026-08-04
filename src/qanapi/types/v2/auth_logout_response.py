@@ -2,12 +2,12 @@
 
 from typing import Optional
 
-from .._models import BaseModel
+from ..._models import BaseModel
 
-__all__ = ["APIKeyRotateResponse"]
+__all__ = ["AuthLogoutResponse"]
 
 
-class APIKeyRotateResponse(BaseModel):
-    api_key: Optional[str] = None
-
+class AuthLogoutResponse(BaseModel):
     message: Optional[str] = None
+
+    user: Optional[str] = None

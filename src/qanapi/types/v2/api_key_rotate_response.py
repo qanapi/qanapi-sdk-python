@@ -2,10 +2,12 @@
 
 from typing import Optional
 
-from .._models import BaseModel
+from ..._models import BaseModel
 
-__all__ = ["AuthRevokeTokenResponse"]
+__all__ = ["APIKeyRotateResponse"]
 
 
-class AuthRevokeTokenResponse(BaseModel):
+class APIKeyRotateResponse(BaseModel):
+    api_key: Optional[str] = None
+
     message: Optional[str] = None
