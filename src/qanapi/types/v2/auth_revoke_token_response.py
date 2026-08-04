@@ -2,10 +2,10 @@
 
 from typing import Optional
 
-from .._models import BaseModel
+from ..._models import BaseModel
 
-__all__ = ["APIKeyRevokeResponse"]
+__all__ = ["AuthRevokeTokenResponse"]
 
 
-class APIKeyRevokeResponse(BaseModel):
+class AuthRevokeTokenResponse(BaseModel):
     message: Optional[str] = None

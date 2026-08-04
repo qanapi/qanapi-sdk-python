@@ -4,23 +4,23 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import auth_login_params
-from .._types import Body, Query, Headers, NotGiven, not_given
-from .._utils import maybe_transform, async_maybe_transform
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from ..._compat import cached_property
+from ...types.v2 import auth_login_params
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.auth_login_response import AuthLoginResponse
-from ..types.auth_logout_response import AuthLogoutResponse
-from ..types.auth_revoke_token_response import AuthRevokeTokenResponse
-from ..types.auth_refresh_token_response import AuthRefreshTokenResponse
-from ..types.auth_retrieve_user_details_response import AuthRetrieveUserDetailsResponse
+from ..._base_client import make_request_options
+from ...types.v2.auth_login_response import AuthLoginResponse
+from ...types.v2.auth_logout_response import AuthLogoutResponse
+from ...types.v2.auth_revoke_token_response import AuthRevokeTokenResponse
+from ...types.v2.auth_refresh_token_response import AuthRefreshTokenResponse
+from ...types.v2.auth_retrieve_user_details_response import AuthRetrieveUserDetailsResponse
 
 __all__ = ["AuthResource", "AsyncAuthResource"]
 

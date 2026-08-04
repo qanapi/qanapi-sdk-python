@@ -9,7 +9,7 @@ import pytest
 
 from qanapi import Qanapi, AsyncQanapi
 from tests.utils import assert_matches_type
-from qanapi.types import EncryptEncryptDataResponse
+from qanapi.types.v2 import EncryptEncryptDataResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +20,7 @@ class TestEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_encrypt_data(self, client: Qanapi) -> None:
-        encrypt = client.encrypt.encrypt_data(
+        encrypt = client.v2.encrypt.encrypt_data(
             data={"password": "bar"},
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
@@ -28,7 +28,7 @@ class TestEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_encrypt_data_with_all_params(self, client: Qanapi) -> None:
-        encrypt = client.encrypt.encrypt_data(
+        encrypt = client.v2.encrypt.encrypt_data(
             data={"password": "bar"},
             access={"acl": ["admin"]},
             attributes={
@@ -43,7 +43,7 @@ class TestEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_encrypt_data(self, client: Qanapi) -> None:
-        response = client.encrypt.with_raw_response.encrypt_data(
+        response = client.v2.encrypt.with_raw_response.encrypt_data(
             data={"password": "bar"},
         )
 
@@ -55,7 +55,7 @@ class TestEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_encrypt_data(self, client: Qanapi) -> None:
-        with client.encrypt.with_streaming_response.encrypt_data(
+        with client.v2.encrypt.with_streaming_response.encrypt_data(
             data={"password": "bar"},
         ) as response:
             assert not response.is_closed
@@ -75,7 +75,7 @@ class TestAsyncEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_encrypt_data(self, async_client: AsyncQanapi) -> None:
-        encrypt = await async_client.encrypt.encrypt_data(
+        encrypt = await async_client.v2.encrypt.encrypt_data(
             data={"password": "bar"},
         )
         assert_matches_type(EncryptEncryptDataResponse, encrypt, path=["response"])
@@ -83,7 +83,7 @@ class TestAsyncEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_encrypt_data_with_all_params(self, async_client: AsyncQanapi) -> None:
-        encrypt = await async_client.encrypt.encrypt_data(
+        encrypt = await async_client.v2.encrypt.encrypt_data(
             data={"password": "bar"},
             access={"acl": ["admin"]},
             attributes={
@@ -98,7 +98,7 @@ class TestAsyncEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_encrypt_data(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.encrypt.with_raw_response.encrypt_data(
+        response = await async_client.v2.encrypt.with_raw_response.encrypt_data(
             data={"password": "bar"},
         )
 
@@ -110,7 +110,7 @@ class TestAsyncEncrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_encrypt_data(self, async_client: AsyncQanapi) -> None:
-        async with async_client.encrypt.with_streaming_response.encrypt_data(
+        async with async_client.v2.encrypt.with_streaming_response.encrypt_data(
             data={"password": "bar"},
         ) as response:
             assert not response.is_closed

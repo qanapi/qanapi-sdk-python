@@ -9,7 +9,7 @@ import pytest
 
 from qanapi import Qanapi, AsyncQanapi
 from tests.utils import assert_matches_type
-from qanapi.types import APIKeyRevokeResponse, APIKeyRotateResponse
+from qanapi.types.v2 import APIKeyRevokeResponse, APIKeyRotateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +20,7 @@ class TestAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_revoke(self, client: Qanapi) -> None:
-        api_key = client.api_keys.revoke(
+        api_key = client.v2.api_keys.revoke(
             "apiKey",
         )
         assert_matches_type(APIKeyRevokeResponse, api_key, path=["response"])
@@ -28,7 +28,7 @@ class TestAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_revoke(self, client: Qanapi) -> None:
-        response = client.api_keys.with_raw_response.revoke(
+        response = client.v2.api_keys.with_raw_response.revoke(
             "apiKey",
         )
 
@@ -40,7 +40,7 @@ class TestAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_revoke(self, client: Qanapi) -> None:
-        with client.api_keys.with_streaming_response.revoke(
+        with client.v2.api_keys.with_streaming_response.revoke(
             "apiKey",
         ) as response:
             assert not response.is_closed
@@ -55,14 +55,14 @@ class TestAPIKeys:
     @parametrize
     def test_path_params_revoke(self, client: Qanapi) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `api_key` but received ''"):
-            client.api_keys.with_raw_response.revoke(
+            client.v2.api_keys.with_raw_response.revoke(
                 "",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_rotate(self, client: Qanapi) -> None:
-        api_key = client.api_keys.rotate(
+        api_key = client.v2.api_keys.rotate(
             "apiKey",
         )
         assert_matches_type(APIKeyRotateResponse, api_key, path=["response"])
@@ -70,7 +70,7 @@ class TestAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_rotate(self, client: Qanapi) -> None:
-        response = client.api_keys.with_raw_response.rotate(
+        response = client.v2.api_keys.with_raw_response.rotate(
             "apiKey",
         )
 
@@ -82,7 +82,7 @@ class TestAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_rotate(self, client: Qanapi) -> None:
-        with client.api_keys.with_streaming_response.rotate(
+        with client.v2.api_keys.with_streaming_response.rotate(
             "apiKey",
         ) as response:
             assert not response.is_closed
@@ -97,7 +97,7 @@ class TestAPIKeys:
     @parametrize
     def test_path_params_rotate(self, client: Qanapi) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `api_key` but received ''"):
-            client.api_keys.with_raw_response.rotate(
+            client.v2.api_keys.with_raw_response.rotate(
                 "",
             )
 
@@ -110,7 +110,7 @@ class TestAsyncAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_revoke(self, async_client: AsyncQanapi) -> None:
-        api_key = await async_client.api_keys.revoke(
+        api_key = await async_client.v2.api_keys.revoke(
             "apiKey",
         )
         assert_matches_type(APIKeyRevokeResponse, api_key, path=["response"])
@@ -118,7 +118,7 @@ class TestAsyncAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_revoke(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.api_keys.with_raw_response.revoke(
+        response = await async_client.v2.api_keys.with_raw_response.revoke(
             "apiKey",
         )
 
@@ -130,7 +130,7 @@ class TestAsyncAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_revoke(self, async_client: AsyncQanapi) -> None:
-        async with async_client.api_keys.with_streaming_response.revoke(
+        async with async_client.v2.api_keys.with_streaming_response.revoke(
             "apiKey",
         ) as response:
             assert not response.is_closed
@@ -145,14 +145,14 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_path_params_revoke(self, async_client: AsyncQanapi) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `api_key` but received ''"):
-            await async_client.api_keys.with_raw_response.revoke(
+            await async_client.v2.api_keys.with_raw_response.revoke(
                 "",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_rotate(self, async_client: AsyncQanapi) -> None:
-        api_key = await async_client.api_keys.rotate(
+        api_key = await async_client.v2.api_keys.rotate(
             "apiKey",
         )
         assert_matches_type(APIKeyRotateResponse, api_key, path=["response"])
@@ -160,7 +160,7 @@ class TestAsyncAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_rotate(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.api_keys.with_raw_response.rotate(
+        response = await async_client.v2.api_keys.with_raw_response.rotate(
             "apiKey",
         )
 
@@ -172,7 +172,7 @@ class TestAsyncAPIKeys:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_rotate(self, async_client: AsyncQanapi) -> None:
-        async with async_client.api_keys.with_streaming_response.rotate(
+        async with async_client.v2.api_keys.with_streaming_response.rotate(
             "apiKey",
         ) as response:
             assert not response.is_closed
@@ -187,6 +187,6 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_path_params_rotate(self, async_client: AsyncQanapi) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `api_key` but received ''"):
-            await async_client.api_keys.with_raw_response.rotate(
+            await async_client.v2.api_keys.with_raw_response.rotate(
                 "",
             )

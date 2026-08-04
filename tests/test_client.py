@@ -941,7 +941,7 @@ class TestQanapi:
         respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            client.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
+            client.v2.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
 
         assert _get_open_connections(client) == 0
 
@@ -951,7 +951,7 @@ class TestQanapi:
         respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            client.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
+            client.v2.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
         assert _get_open_connections(client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -980,7 +980,7 @@ class TestQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
+        response = client.v2.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1004,7 +1004,7 @@ class TestQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(
+        response = client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -1029,7 +1029,7 @@ class TestQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(
+        response = client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
         )
 
@@ -1931,7 +1931,7 @@ class TestAsyncQanapi:
         respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await async_client.auth.with_streaming_response.login(
+            await async_client.v2.auth.with_streaming_response.login(
                 email="valid@email.com", password="secret1234"
             ).__aenter__()
 
@@ -1943,7 +1943,7 @@ class TestAsyncQanapi:
         respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await async_client.auth.with_streaming_response.login(
+            await async_client.v2.auth.with_streaming_response.login(
                 email="valid@email.com", password="secret1234"
             ).__aenter__()
         assert _get_open_connections(async_client) == 0
@@ -1974,7 +1974,7 @@ class TestAsyncQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
+        response = await client.v2.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1998,7 +1998,7 @@ class TestAsyncQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(
+        response = await client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -2023,7 +2023,7 @@ class TestAsyncQanapi:
 
         respx_mock.post("/auth/login").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(
+        response = await client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
         )
 

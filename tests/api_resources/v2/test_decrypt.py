@@ -9,7 +9,7 @@ import pytest
 
 from qanapi import Qanapi, AsyncQanapi
 from tests.utils import assert_matches_type
-from qanapi.types import DecryptDecryptPayloadResponse
+from qanapi.types.v2 import DecryptDecryptPayloadResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +20,7 @@ class TestDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_decrypt_payload(self, client: Qanapi) -> None:
-        decrypt = client.decrypt.decrypt_payload(
+        decrypt = client.v2.decrypt.decrypt_payload(
             data={"password": "bar"},
         )
         assert_matches_type(DecryptDecryptPayloadResponse, decrypt, path=["response"])
@@ -28,7 +28,7 @@ class TestDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_decrypt_payload_with_all_params(self, client: Qanapi) -> None:
-        decrypt = client.decrypt.decrypt_payload(
+        decrypt = client.v2.decrypt.decrypt_payload(
             data={"password": "bar"},
             sensitive_fields=["password"],
         )
@@ -37,7 +37,7 @@ class TestDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_decrypt_payload(self, client: Qanapi) -> None:
-        response = client.decrypt.with_raw_response.decrypt_payload(
+        response = client.v2.decrypt.with_raw_response.decrypt_payload(
             data={"password": "bar"},
         )
 
@@ -49,7 +49,7 @@ class TestDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_decrypt_payload(self, client: Qanapi) -> None:
-        with client.decrypt.with_streaming_response.decrypt_payload(
+        with client.v2.decrypt.with_streaming_response.decrypt_payload(
             data={"password": "bar"},
         ) as response:
             assert not response.is_closed
@@ -69,7 +69,7 @@ class TestAsyncDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_decrypt_payload(self, async_client: AsyncQanapi) -> None:
-        decrypt = await async_client.decrypt.decrypt_payload(
+        decrypt = await async_client.v2.decrypt.decrypt_payload(
             data={"password": "bar"},
         )
         assert_matches_type(DecryptDecryptPayloadResponse, decrypt, path=["response"])
@@ -77,7 +77,7 @@ class TestAsyncDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_decrypt_payload_with_all_params(self, async_client: AsyncQanapi) -> None:
-        decrypt = await async_client.decrypt.decrypt_payload(
+        decrypt = await async_client.v2.decrypt.decrypt_payload(
             data={"password": "bar"},
             sensitive_fields=["password"],
         )
@@ -86,7 +86,7 @@ class TestAsyncDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_decrypt_payload(self, async_client: AsyncQanapi) -> None:
-        response = await async_client.decrypt.with_raw_response.decrypt_payload(
+        response = await async_client.v2.decrypt.with_raw_response.decrypt_payload(
             data={"password": "bar"},
         )
 
@@ -98,7 +98,7 @@ class TestAsyncDecrypt:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_decrypt_payload(self, async_client: AsyncQanapi) -> None:
-        async with async_client.decrypt.with_streaming_response.decrypt_payload(
+        async with async_client.v2.decrypt.with_streaming_response.decrypt_payload(
             data={"password": "bar"},
         ) as response:
             assert not response.is_closed
