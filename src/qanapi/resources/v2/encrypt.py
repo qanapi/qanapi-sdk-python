@@ -94,7 +94,7 @@ class EncryptResource(SyncAPIResource):
         return cast(
             EncryptEncryptDataResponse,
             self._post(
-                "/encrypt",
+                "/v2/encrypt",
                 body=maybe_transform(
                     {
                         "data": data,
@@ -185,7 +185,7 @@ class AsyncEncryptResource(AsyncAPIResource):
         return cast(
             EncryptEncryptDataResponse,
             await self._post(
-                "/encrypt",
+                "/v2/encrypt",
                 body=await async_maybe_transform(
                     {
                         "data": data,

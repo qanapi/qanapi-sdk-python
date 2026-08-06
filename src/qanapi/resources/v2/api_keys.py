@@ -67,7 +67,7 @@ class APIKeysResource(SyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return self._patch(
-            path_template("/api-keys/{api_key}/revoke", api_key=api_key),
+            path_template("/v2/api-keys/{api_key}/revoke", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -100,7 +100,7 @@ class APIKeysResource(SyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return self._patch(
-            path_template("/api-keys/{api_key}/rotate", api_key=api_key),
+            path_template("/v2/api-keys/{api_key}/rotate", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -154,7 +154,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return await self._patch(
-            path_template("/api-keys/{api_key}/revoke", api_key=api_key),
+            path_template("/v2/api-keys/{api_key}/revoke", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -187,7 +187,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         if not api_key:
             raise ValueError(f"Expected a non-empty value for `api_key` but received {api_key!r}")
         return await self._patch(
-            path_template("/api-keys/{api_key}/rotate", api_key=api_key),
+            path_template("/v2/api-keys/{api_key}/rotate", api_key=api_key),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
