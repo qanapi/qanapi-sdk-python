@@ -11,7 +11,7 @@ __all__ = ["EncryptionDecryptParams"]
 
 
 class EncryptionDecryptParams(TypedDict, total=False):
-    body: Required[Dict[str, object]]
+    data: Required[Dict[str, object]]
     """A JSON object to decrypt fields on. A maximum depth of 32 is allowed."""
 
     x_qanapi_fields: Annotated[str, PropertyInfo(alias="x-qanapi-fields")]

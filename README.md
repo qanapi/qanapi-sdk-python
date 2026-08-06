@@ -35,7 +35,7 @@ client = Qanapi(
 
 response = client.v3.encryption.encrypt(
     proxy="proxy",
-    body={"foo": "bar"},
+    data={"foo": "bar"},
     x_qanapi_fields="x-qanapi-fields",
 )
 ```
@@ -63,7 +63,7 @@ client = AsyncQanapi(
 async def main() -> None:
     response = await client.v3.encryption.encrypt(
         proxy="proxy",
-        body={"foo": "bar"},
+        data={"foo": "bar"},
         x_qanapi_fields="x-qanapi-fields",
     )
 
@@ -101,7 +101,7 @@ async def main() -> None:
     ) as client:
         response = await client.v3.encryption.encrypt(
             proxy="proxy",
-            body={"foo": "bar"},
+            data={"foo": "bar"},
             x_qanapi_fields="x-qanapi-fields",
         )
 
@@ -156,7 +156,7 @@ client = Qanapi(
 try:
     client.v3.encryption.encrypt(
         proxy="proxy",
-        body={"foo": "bar"},
+        data={"foo": "bar"},
         x_qanapi_fields="x-qanapi-fields",
     )
 except qanapi.APIConnectionError as e:
@@ -204,7 +204,7 @@ client = Qanapi(
 # Or, configure per-request:
 client.with_options(max_retries=5).v3.encryption.encrypt(
     proxy="proxy",
-    body={"foo": "bar"},
+    data={"foo": "bar"},
     x_qanapi_fields="x-qanapi-fields",
 )
 ```
@@ -233,7 +233,7 @@ client = Qanapi(
 # Override per-request:
 client.with_options(timeout=5.0).v3.encryption.encrypt(
     proxy="proxy",
-    body={"foo": "bar"},
+    data={"foo": "bar"},
     x_qanapi_fields="x-qanapi-fields",
 )
 ```
@@ -280,7 +280,7 @@ client = Qanapi(
 )
 response = client.v3.encryption.with_raw_response.encrypt(
     proxy="proxy",
-    body={
+    data={
         "foo": "bar"
     },
     x_qanapi_fields="x-qanapi-fields",
@@ -304,7 +304,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 ```python
 with client.v3.encryption.with_streaming_response.encrypt(
     proxy="proxy",
-    body={"foo": "bar"},
+    data={"foo": "bar"},
     x_qanapi_fields="x-qanapi-fields",
 ) as response:
     print(response.headers.get("X-My-Header"))
