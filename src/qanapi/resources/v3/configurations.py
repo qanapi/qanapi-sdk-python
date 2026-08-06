@@ -18,10 +18,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.configuration import Configuration
 from ...types.v3.configuration_list_response import ConfigurationListResponse
-from ...types.v3.configuration_show_response import ConfigurationShowResponse
-from ...types.v3.configuration_create_response import ConfigurationCreateResponse
-from ...types.v3.configuration_update_response import ConfigurationUpdateResponse
 
 __all__ = ["ConfigurationsResource", "AsyncConfigurationsResource"]
 
@@ -58,7 +56,7 @@ class ConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigurationCreateResponse:
+    ) -> Configuration:
         """
         Create configuration
 
@@ -86,7 +84,7 @@ class ConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigurationCreateResponse,
+            cast_to=Configuration,
         )
 
     def update(
@@ -100,7 +98,7 @@ class ConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigurationUpdateResponse:
+    ) -> Configuration:
         """
         Update configuration
 
@@ -121,7 +119,7 @@ class ConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigurationUpdateResponse,
+            cast_to=Configuration,
         )
 
     def list(
@@ -187,7 +185,7 @@ class ConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigurationShowResponse:
+    ) -> Configuration:
         """
         Get configuration
 
@@ -207,7 +205,7 @@ class ConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigurationShowResponse,
+            cast_to=Configuration,
         )
 
 
@@ -243,7 +241,7 @@ class AsyncConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigurationCreateResponse:
+    ) -> Configuration:
         """
         Create configuration
 
@@ -271,7 +269,7 @@ class AsyncConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigurationCreateResponse,
+            cast_to=Configuration,
         )
 
     async def update(
@@ -285,7 +283,7 @@ class AsyncConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigurationUpdateResponse:
+    ) -> Configuration:
         """
         Update configuration
 
@@ -306,7 +304,7 @@ class AsyncConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigurationUpdateResponse,
+            cast_to=Configuration,
         )
 
     async def list(
@@ -372,7 +370,7 @@ class AsyncConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ConfigurationShowResponse:
+    ) -> Configuration:
         """
         Get configuration
 
@@ -392,7 +390,7 @@ class AsyncConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ConfigurationShowResponse,
+            cast_to=Configuration,
         )
 
 

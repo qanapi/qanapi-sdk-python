@@ -3,24 +3,13 @@
 from typing import List, Optional
 from datetime import datetime
 
-from ..._models import BaseModel
+from .role import Role
+from .._models import BaseModel
 
-__all__ = ["UserRestoreResponse", "Role", "RolePermission"]
-
-
-class RolePermission(BaseModel):
-    name: str
+__all__ = ["User"]
 
 
-class Role(BaseModel):
-    name: str
-
-    description: Optional[str] = None
-
-    permissions: Optional[List[RolePermission]] = None
-
-
-class UserRestoreResponse(BaseModel):
+class User(BaseModel):
     id: int
 
     email: str

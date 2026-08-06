@@ -9,7 +9,8 @@ import pytest
 
 from qanapi import Qanapi, AsyncQanapi
 from tests.utils import assert_matches_type
-from qanapi.types.v3 import APIKeyListResponse, APIKeyShowResponse, APIKeyRotateResponse
+from qanapi.types import APIKey
+from qanapi.types.v3 import APIKeyListResponse, APIKeyRotateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -119,7 +120,7 @@ class TestAPIKeys:
         api_key = client.v3.api_keys.show(
             0,
         )
-        assert_matches_type(APIKeyShowResponse, api_key, path=["response"])
+        assert_matches_type(APIKey, api_key, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -131,7 +132,7 @@ class TestAPIKeys:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         api_key = response.parse()
-        assert_matches_type(APIKeyShowResponse, api_key, path=["response"])
+        assert_matches_type(APIKey, api_key, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -143,7 +144,7 @@ class TestAPIKeys:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             api_key = response.parse()
-            assert_matches_type(APIKeyShowResponse, api_key, path=["response"])
+            assert_matches_type(APIKey, api_key, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -255,7 +256,7 @@ class TestAsyncAPIKeys:
         api_key = await async_client.v3.api_keys.show(
             0,
         )
-        assert_matches_type(APIKeyShowResponse, api_key, path=["response"])
+        assert_matches_type(APIKey, api_key, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -267,7 +268,7 @@ class TestAsyncAPIKeys:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         api_key = await response.parse()
-        assert_matches_type(APIKeyShowResponse, api_key, path=["response"])
+        assert_matches_type(APIKey, api_key, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -279,6 +280,6 @@ class TestAsyncAPIKeys:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             api_key = await response.parse()
-            assert_matches_type(APIKeyShowResponse, api_key, path=["response"])
+            assert_matches_type(APIKey, api_key, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -2,18 +2,13 @@
 
 from typing import List, Optional
 
-from ..._models import BaseModel
+from .value import Value
+from .._models import BaseModel
 
-__all__ = ["ConfigurationShowResponse", "Value"]
-
-
-class Value(BaseModel):
-    key: str
-
-    value: str
+__all__ = ["Configuration"]
 
 
-class ConfigurationShowResponse(BaseModel):
+class Configuration(BaseModel):
     id: str
 
     name: str

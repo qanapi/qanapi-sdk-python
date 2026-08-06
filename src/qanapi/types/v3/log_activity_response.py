@@ -5,37 +5,10 @@ from datetime import datetime
 
 from pydantic import Field as FieldInfo
 
+from ..user import User
 from ..._models import BaseModel
 
-__all__ = ["LogActivityResponse", "Data", "DataUser", "DataUserRole", "DataUserRolePermission", "Link"]
-
-
-class DataUserRolePermission(BaseModel):
-    name: str
-
-
-class DataUserRole(BaseModel):
-    name: str
-
-    description: Optional[str] = None
-
-    permissions: Optional[List[DataUserRolePermission]] = None
-
-
-class DataUser(BaseModel):
-    id: int
-
-    email: str
-
-    name: str
-
-    created_at: Optional[datetime] = None
-
-    roles: Optional[List[DataUserRole]] = None
-
-    two_factor_enabled: Optional[bool] = None
-
-    updated_at: Optional[datetime] = None
+__all__ = ["LogActivityResponse", "Data", "Link"]
 
 
 class Data(BaseModel):
@@ -47,7 +20,7 @@ class Data(BaseModel):
 
     timestamp: Optional[datetime] = None
 
-    user: Optional[DataUser] = None
+    user: Optional[User] = None
 
     when: Optional[str] = None
 
