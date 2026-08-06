@@ -86,7 +86,7 @@ class Data(BaseModel):
 
     description: Optional[str] = None
 
-    details: Optional[object] = None
+    details: Optional[str] = None
 
     full_log: Optional[DataFullLog] = None
 

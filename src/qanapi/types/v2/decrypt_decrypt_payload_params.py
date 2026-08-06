@@ -22,7 +22,7 @@ class DecryptDecryptPayloadParams(TypedDict, total=False):
     sensitive_fields: Annotated[SequenceNotStr[str], PropertyInfo(alias="sensitiveFields")]
     """Laravel-style dot-notated paths to fields to decrypt.
 
-    - Same syntax and behavior as in EncryptRequest.
+    - Same syntax and behavior as in V2EncryptRequest.
     - If omitted, all string values matching encryption prefix are attempted.
 
     Examples:
