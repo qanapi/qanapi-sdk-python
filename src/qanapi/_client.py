@@ -35,8 +35,9 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import v2
+    from .resources import v2, v3
     from .resources.v2.v2 import V2Resource, AsyncV2Resource
+    from .resources.v3.v3 import V3Resource, AsyncV3Resource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Qanapi", "AsyncQanapi", "Client", "AsyncClient"]
 
@@ -126,6 +127,12 @@ class Qanapi(SyncAPIClient):
         from .resources.v2 import V2Resource
 
         return V2Resource(self)
+
+    @cached_property
+    def v3(self) -> V3Resource:
+        from .resources.v3 import V3Resource
+
+        return V3Resource(self)
 
     @cached_property
     def with_raw_response(self) -> QanapiWithRawResponse:
@@ -342,6 +349,12 @@ class AsyncQanapi(AsyncAPIClient):
         return AsyncV2Resource(self)
 
     @cached_property
+    def v3(self) -> AsyncV3Resource:
+        from .resources.v3 import AsyncV3Resource
+
+        return AsyncV3Resource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncQanapiWithRawResponse:
         return AsyncQanapiWithRawResponse(self)
 
@@ -481,6 +494,12 @@ class QanapiWithRawResponse:
 
         return V2ResourceWithRawResponse(self._client.v2)
 
+    @cached_property
+    def v3(self) -> v3.V3ResourceWithRawResponse:
+        from .resources.v3 import V3ResourceWithRawResponse
+
+        return V3ResourceWithRawResponse(self._client.v3)
+
 
 class AsyncQanapiWithRawResponse:
     _client: AsyncQanapi
@@ -493,6 +512,12 @@ class AsyncQanapiWithRawResponse:
         from .resources.v2 import AsyncV2ResourceWithRawResponse
 
         return AsyncV2ResourceWithRawResponse(self._client.v2)
+
+    @cached_property
+    def v3(self) -> v3.AsyncV3ResourceWithRawResponse:
+        from .resources.v3 import AsyncV3ResourceWithRawResponse
+
+        return AsyncV3ResourceWithRawResponse(self._client.v3)
 
 
 class QanapiWithStreamedResponse:
@@ -507,6 +532,12 @@ class QanapiWithStreamedResponse:
 
         return V2ResourceWithStreamingResponse(self._client.v2)
 
+    @cached_property
+    def v3(self) -> v3.V3ResourceWithStreamingResponse:
+        from .resources.v3 import V3ResourceWithStreamingResponse
+
+        return V3ResourceWithStreamingResponse(self._client.v3)
+
 
 class AsyncQanapiWithStreamedResponse:
     _client: AsyncQanapi
@@ -519,6 +550,12 @@ class AsyncQanapiWithStreamedResponse:
         from .resources.v2 import AsyncV2ResourceWithStreamingResponse
 
         return AsyncV2ResourceWithStreamingResponse(self._client.v2)
+
+    @cached_property
+    def v3(self) -> v3.AsyncV3ResourceWithStreamingResponse:
+        from .resources.v3 import AsyncV3ResourceWithStreamingResponse
+
+        return AsyncV3ResourceWithStreamingResponse(self._client.v3)
 
 
 Client = Qanapi

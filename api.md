@@ -58,3 +58,111 @@ Methods:
 
 - <code title="patch /v2/api-keys/{apiKey}/revoke">client.v2.api_keys.<a href="./src/qanapi/resources/v2/api_keys.py">revoke</a>(api_key) -> <a href="./src/qanapi/types/v2/api_key_revoke_response.py">APIKeyRevokeResponse</a></code>
 - <code title="patch /v2/api-keys/{apiKey}/rotate">client.v2.api_keys.<a href="./src/qanapi/resources/v2/api_keys.py">rotate</a>(api_key) -> <a href="./src/qanapi/types/v2/api_key_rotate_response.py">APIKeyRotateResponse</a></code>
+
+# V3
+
+## Roles
+
+Types:
+
+```python
+from qanapi.types.v3 import RoleListResponse
+```
+
+Methods:
+
+- <code title="get /v3/roles">client.v3.roles.<a href="./src/qanapi/resources/v3/roles.py">list</a>() -> <a href="./src/qanapi/types/v3/role_list_response.py">RoleListResponse</a></code>
+
+## Configurations
+
+Types:
+
+```python
+from qanapi.types.v3 import (
+    ConfigurationCreateResponse,
+    ConfigurationUpdateResponse,
+    ConfigurationListResponse,
+    ConfigurationShowResponse,
+)
+```
+
+Methods:
+
+- <code title="post /v3/configurations">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">create</a>(\*\*<a href="src/qanapi/types/v3/configuration_create_params.py">params</a>) -> <a href="./src/qanapi/types/v3/configuration_create_response.py">ConfigurationCreateResponse</a></code>
+- <code title="put /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">update</a>(configuration, \*\*<a href="src/qanapi/types/v3/configuration_update_params.py">params</a>) -> <a href="./src/qanapi/types/v3/configuration_update_response.py">ConfigurationUpdateResponse</a></code>
+- <code title="get /v3/configurations">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">list</a>() -> <a href="./src/qanapi/types/v3/configuration_list_response.py">ConfigurationListResponse</a></code>
+- <code title="delete /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">delete</a>(configuration) -> None</code>
+- <code title="get /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">show</a>(configuration) -> <a href="./src/qanapi/types/v3/configuration_show_response.py">ConfigurationShowResponse</a></code>
+
+## Users
+
+Types:
+
+```python
+from qanapi.types.v3 import (
+    UserCreateResponse,
+    UserListResponse,
+    UserMeResponse,
+    UserPatchResponse,
+    UserRestoreResponse,
+    UserShowResponse,
+)
+```
+
+Methods:
+
+- <code title="post /v3/users">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">create</a>(\*\*<a href="src/qanapi/types/v3/user_create_params.py">params</a>) -> <a href="./src/qanapi/types/v3/user_create_response.py">UserCreateResponse</a></code>
+- <code title="get /v3/users">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">list</a>() -> <a href="./src/qanapi/types/v3/user_list_response.py">UserListResponse</a></code>
+- <code title="delete /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">delete</a>(user) -> None</code>
+- <code title="get /v3/users/me">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">me</a>() -> <a href="./src/qanapi/types/v3/user_me_response.py">UserMeResponse</a></code>
+- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">patch</a>(user, \*\*<a href="src/qanapi/types/v3/user_patch_params.py">params</a>) -> <a href="./src/qanapi/types/v3/user_patch_response.py">UserPatchResponse</a></code>
+- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">restore</a>(user, \*\*<a href="src/qanapi/types/v3/user_restore_params.py">params</a>) -> <a href="./src/qanapi/types/v3/user_restore_response.py">UserRestoreResponse</a></code>
+- <code title="get /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">show</a>(user) -> <a href="./src/qanapi/types/v3/user_show_response.py">UserShowResponse</a></code>
+
+## APIKeys
+
+Types:
+
+```python
+from qanapi.types.v3 import APIKeyListResponse, APIKeyRotateResponse, APIKeyShowResponse
+```
+
+Methods:
+
+- <code title="get /v3/api-keys">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">list</a>() -> <a href="./src/qanapi/types/v3/api_key_list_response.py">APIKeyListResponse</a></code>
+- <code title="post /v3/api-keys/{apiKey}/revoke">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">revoke</a>(api_key) -> None</code>
+- <code title="post /v3/api-keys/{apiKey}/rotate">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">rotate</a>(api_key) -> <a href="./src/qanapi/types/v3/api_key_rotate_response.py">APIKeyRotateResponse</a></code>
+- <code title="get /v3/api-keys/{apiKey}">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">show</a>(api_key) -> <a href="./src/qanapi/types/v3/api_key_show_response.py">APIKeyShowResponse</a></code>
+
+## Logs
+
+Types:
+
+```python
+from qanapi.types.v3 import (
+    LogActivityResponse,
+    LogAPIResponse,
+    LogQanapiFlowResponse,
+    LogUnifiedResponse,
+)
+```
+
+Methods:
+
+- <code title="get /v3/logs/activity">client.v3.logs.<a href="./src/qanapi/resources/v3/logs.py">activity</a>(\*\*<a href="src/qanapi/types/v3/log_activity_params.py">params</a>) -> <a href="./src/qanapi/types/v3/log_activity_response.py">LogActivityResponse</a></code>
+- <code title="get /v3/logs/api">client.v3.logs.<a href="./src/qanapi/resources/v3/logs.py">api</a>(\*\*<a href="src/qanapi/types/v3/log_api_params.py">params</a>) -> <a href="./src/qanapi/types/v3/log_api_response.py">LogAPIResponse</a></code>
+- <code title="get /v3/logs/qanapi-flow">client.v3.logs.<a href="./src/qanapi/resources/v3/logs.py">qanapi_flow</a>(\*\*<a href="src/qanapi/types/v3/log_qanapi_flow_params.py">params</a>) -> <a href="./src/qanapi/types/v3/log_qanapi_flow_response.py">LogQanapiFlowResponse</a></code>
+- <code title="get /v3/logs/unified">client.v3.logs.<a href="./src/qanapi/resources/v3/logs.py">unified</a>(\*\*<a href="src/qanapi/types/v3/log_unified_params.py">params</a>) -> <a href="./src/qanapi/types/v3/log_unified_response.py">LogUnifiedResponse</a></code>
+
+## Encryption
+
+Types:
+
+```python
+from qanapi.types.v3 import EncryptionDecryptResponse, EncryptionEncryptResponse
+```
+
+Methods:
+
+- <code title="post /v3/encryption/{proxy}/decrypt">client.v3.encryption.<a href="./src/qanapi/resources/v3/encryption.py">decrypt</a>(proxy, \*\*<a href="src/qanapi/types/v3/encryption_decrypt_params.py">params</a>) -> <a href="./src/qanapi/types/v3/encryption_decrypt_response.py">EncryptionDecryptResponse</a></code>
+- <code title="post /v3/encryption/{proxy}/encrypt">client.v3.encryption.<a href="./src/qanapi/resources/v3/encryption.py">encrypt</a>(proxy, \*\*<a href="src/qanapi/types/v3/encryption_encrypt_params.py">params</a>) -> <a href="./src/qanapi/types/v3/encryption_encrypt_response.py">EncryptionEncryptResponse</a></code>
