@@ -15,8 +15,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.api_key import APIKey
 from ...types.v3.api_key_list_response import APIKeyListResponse
-from ...types.v3.api_key_show_response import APIKeyShowResponse
 from ...types.v3.api_key_rotate_response import APIKeyRotateResponse
 
 __all__ = ["APIKeysResource", "AsyncAPIKeysResource"]
@@ -134,7 +134,7 @@ class APIKeysResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIKeyShowResponse:
+    ) -> APIKey:
         """
         Get API Key
 
@@ -152,7 +152,7 @@ class APIKeysResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=APIKeyShowResponse,
+            cast_to=APIKey,
         )
 
 
@@ -268,7 +268,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIKeyShowResponse:
+    ) -> APIKey:
         """
         Get API Key
 
@@ -286,7 +286,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=APIKeyShowResponse,
+            cast_to=APIKey,
         )
 
 

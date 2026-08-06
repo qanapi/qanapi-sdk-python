@@ -7,7 +7,7 @@ import httpx
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
-from ...types.v3 import user_patch_params, user_create_params, user_restore_params
+from ...types.v3 import user_patch_params, user_create_params
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
     to_raw_response_wrapper,
@@ -15,13 +15,9 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...types.user import User
 from ..._base_client import make_request_options
-from ...types.v3.user_me_response import UserMeResponse
 from ...types.v3.user_list_response import UserListResponse
-from ...types.v3.user_show_response import UserShowResponse
-from ...types.v3.user_patch_response import UserPatchResponse
-from ...types.v3.user_create_response import UserCreateResponse
-from ...types.v3.user_restore_response import UserRestoreResponse
 
 __all__ = ["UsersResource", "AsyncUsersResource"]
 
@@ -57,7 +53,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserCreateResponse:
+    ) -> User:
         """
         Create user
 
@@ -84,7 +80,7 @@ class UsersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserCreateResponse,
+            cast_to=User,
         )
 
     def list(
@@ -147,14 +143,14 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserMeResponse:
+    ) -> User:
         """Get current user"""
         return self._get(
             "/v3/users/me",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserMeResponse,
+            cast_to=User,
         )
 
     def patch(
@@ -171,7 +167,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserPatchResponse:
+    ) -> User:
         """
         Update user
 
@@ -198,26 +194,22 @@ class UsersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserPatchResponse,
+            cast_to=User,
         )
 
     def restore(
         self,
         user: int,
         *,
-        email: str | Omit = omit,
-        name: str | Omit = omit,
-        role: str | Omit = omit,
-        two_factor_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserRestoreResponse:
+    ) -> User:
         """
-        Update user
+        Restore user
 
         Args:
           extra_headers: Send extra headers
@@ -229,20 +221,11 @@ class UsersResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._patch(
-            path_template("/v3/users/{user}", user=user),
-            body=maybe_transform(
-                {
-                    "email": email,
-                    "name": name,
-                    "role": role,
-                    "two_factor_enabled": two_factor_enabled,
-                },
-                user_restore_params.UserRestoreParams,
-            ),
+            path_template("/v3/users/{user}/restore", user=user),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserRestoreResponse,
+            cast_to=User,
         )
 
     def show(
@@ -255,7 +238,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserShowResponse:
+    ) -> User:
         """
         Get user
 
@@ -273,7 +256,7 @@ class UsersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserShowResponse,
+            cast_to=User,
         )
 
 
@@ -308,7 +291,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserCreateResponse:
+    ) -> User:
         """
         Create user
 
@@ -335,7 +318,7 @@ class AsyncUsersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserCreateResponse,
+            cast_to=User,
         )
 
     async def list(
@@ -398,14 +381,14 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserMeResponse:
+    ) -> User:
         """Get current user"""
         return await self._get(
             "/v3/users/me",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserMeResponse,
+            cast_to=User,
         )
 
     async def patch(
@@ -422,7 +405,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserPatchResponse:
+    ) -> User:
         """
         Update user
 
@@ -449,26 +432,22 @@ class AsyncUsersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserPatchResponse,
+            cast_to=User,
         )
 
     async def restore(
         self,
         user: int,
         *,
-        email: str | Omit = omit,
-        name: str | Omit = omit,
-        role: str | Omit = omit,
-        two_factor_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserRestoreResponse:
+    ) -> User:
         """
-        Update user
+        Restore user
 
         Args:
           extra_headers: Send extra headers
@@ -480,20 +459,11 @@ class AsyncUsersResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._patch(
-            path_template("/v3/users/{user}", user=user),
-            body=await async_maybe_transform(
-                {
-                    "email": email,
-                    "name": name,
-                    "role": role,
-                    "two_factor_enabled": two_factor_enabled,
-                },
-                user_restore_params.UserRestoreParams,
-            ),
+            path_template("/v3/users/{user}/restore", user=user),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserRestoreResponse,
+            cast_to=User,
         )
 
     async def show(
@@ -506,7 +476,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserShowResponse:
+    ) -> User:
         """
         Get user
 
@@ -524,7 +494,7 @@ class AsyncUsersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserShowResponse,
+            cast_to=User,
         )
 
 

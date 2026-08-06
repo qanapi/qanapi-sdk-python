@@ -2,96 +2,17 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from ..api_key import APIKey
 from ..._models import BaseModel
 
-__all__ = [
-    "LogAPIResponse",
-    "Data",
-    "DataAPIKey",
-    "DataAPIKeyConfiguration",
-    "DataAPIKeyConfigurationValue",
-    "DataAPIKeyPermission",
-    "DataAPIKeyUser",
-    "DataAPIKeyUserRole",
-    "DataAPIKeyUserRolePermission",
-    "Link",
-]
-
-
-class DataAPIKeyConfigurationValue(BaseModel):
-    key: str
-
-    value: str
-
-
-class DataAPIKeyConfiguration(BaseModel):
-    id: str
-
-    name: str
-
-    type: str
-
-    values: Optional[List[DataAPIKeyConfigurationValue]] = None
-
-
-class DataAPIKeyPermission(BaseModel):
-    name: str
-
-
-class DataAPIKeyUserRolePermission(BaseModel):
-    name: str
-
-
-class DataAPIKeyUserRole(BaseModel):
-    name: str
-
-    description: Optional[str] = None
-
-    permissions: Optional[List[DataAPIKeyUserRolePermission]] = None
-
-
-class DataAPIKeyUser(BaseModel):
-    id: int
-
-    email: str
-
-    name: str
-
-    created_at: Optional[datetime] = None
-
-    roles: Optional[List[DataAPIKeyUserRole]] = None
-
-    two_factor_enabled: Optional[bool] = None
-
-    updated_at: Optional[datetime] = None
-
-
-class DataAPIKey(BaseModel):
-    id: str
-
-    prefix: str
-
-    status: Literal["active", "revoked"]
-
-    configurations: Optional[List[DataAPIKeyConfiguration]] = None
-
-    created_at: Optional[datetime] = None
-
-    permissions: Optional[List[DataAPIKeyPermission]] = None
-
-    revoked_at: Optional[datetime] = None
-
-    updated_at: Optional[datetime] = None
-
-    user: Optional[DataAPIKeyUser] = None
+__all__ = ["LogAPIResponse", "Data", "Link"]
 
 
 class Data(BaseModel):
-    api_key: Optional[DataAPIKey] = None
+    api_key: Optional[APIKey] = None
 
     api_key_id: Optional[int] = None
 

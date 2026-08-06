@@ -61,6 +61,12 @@ Methods:
 
 # V3
 
+Types:
+
+```python
+from qanapi.types import APIKey, Configuration, Permission, Role, User, Value
+```
+
 ## Roles
 
 Types:
@@ -78,53 +84,41 @@ Methods:
 Types:
 
 ```python
-from qanapi.types.v3 import (
-    ConfigurationCreateResponse,
-    ConfigurationUpdateResponse,
-    ConfigurationListResponse,
-    ConfigurationShowResponse,
-)
+from qanapi.types.v3 import ConfigurationListResponse
 ```
 
 Methods:
 
-- <code title="post /v3/configurations">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">create</a>(\*\*<a href="src/qanapi/types/v3/configuration_create_params.py">params</a>) -> <a href="./src/qanapi/types/v3/configuration_create_response.py">ConfigurationCreateResponse</a></code>
-- <code title="put /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">update</a>(configuration, \*\*<a href="src/qanapi/types/v3/configuration_update_params.py">params</a>) -> <a href="./src/qanapi/types/v3/configuration_update_response.py">ConfigurationUpdateResponse</a></code>
+- <code title="post /v3/configurations">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">create</a>(\*\*<a href="src/qanapi/types/v3/configuration_create_params.py">params</a>) -> <a href="./src/qanapi/types/configuration.py">Configuration</a></code>
+- <code title="put /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">update</a>(configuration, \*\*<a href="src/qanapi/types/v3/configuration_update_params.py">params</a>) -> <a href="./src/qanapi/types/configuration.py">Configuration</a></code>
 - <code title="get /v3/configurations">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">list</a>() -> <a href="./src/qanapi/types/v3/configuration_list_response.py">ConfigurationListResponse</a></code>
 - <code title="delete /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">delete</a>(configuration) -> None</code>
-- <code title="get /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">show</a>(configuration) -> <a href="./src/qanapi/types/v3/configuration_show_response.py">ConfigurationShowResponse</a></code>
+- <code title="get /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">show</a>(configuration) -> <a href="./src/qanapi/types/configuration.py">Configuration</a></code>
 
 ## Users
 
 Types:
 
 ```python
-from qanapi.types.v3 import (
-    UserCreateResponse,
-    UserListResponse,
-    UserMeResponse,
-    UserPatchResponse,
-    UserRestoreResponse,
-    UserShowResponse,
-)
+from qanapi.types.v3 import UserListResponse
 ```
 
 Methods:
 
-- <code title="post /v3/users">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">create</a>(\*\*<a href="src/qanapi/types/v3/user_create_params.py">params</a>) -> <a href="./src/qanapi/types/v3/user_create_response.py">UserCreateResponse</a></code>
+- <code title="post /v3/users">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">create</a>(\*\*<a href="src/qanapi/types/v3/user_create_params.py">params</a>) -> <a href="./src/qanapi/types/user.py">User</a></code>
 - <code title="get /v3/users">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">list</a>() -> <a href="./src/qanapi/types/v3/user_list_response.py">UserListResponse</a></code>
 - <code title="delete /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">delete</a>(user) -> None</code>
-- <code title="get /v3/users/me">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">me</a>() -> <a href="./src/qanapi/types/v3/user_me_response.py">UserMeResponse</a></code>
-- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">patch</a>(user, \*\*<a href="src/qanapi/types/v3/user_patch_params.py">params</a>) -> <a href="./src/qanapi/types/v3/user_patch_response.py">UserPatchResponse</a></code>
-- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">restore</a>(user, \*\*<a href="src/qanapi/types/v3/user_restore_params.py">params</a>) -> <a href="./src/qanapi/types/v3/user_restore_response.py">UserRestoreResponse</a></code>
-- <code title="get /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">show</a>(user) -> <a href="./src/qanapi/types/v3/user_show_response.py">UserShowResponse</a></code>
+- <code title="get /v3/users/me">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">me</a>() -> <a href="./src/qanapi/types/user.py">User</a></code>
+- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">patch</a>(user, \*\*<a href="src/qanapi/types/v3/user_patch_params.py">params</a>) -> <a href="./src/qanapi/types/user.py">User</a></code>
+- <code title="patch /v3/users/{user}/restore">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">restore</a>(user) -> <a href="./src/qanapi/types/user.py">User</a></code>
+- <code title="get /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">show</a>(user) -> <a href="./src/qanapi/types/user.py">User</a></code>
 
 ## APIKeys
 
 Types:
 
 ```python
-from qanapi.types.v3 import APIKeyListResponse, APIKeyRotateResponse, APIKeyShowResponse
+from qanapi.types.v3 import APIKeyListResponse, APIKeyRotateResponse
 ```
 
 Methods:
@@ -132,7 +126,7 @@ Methods:
 - <code title="get /v3/api-keys">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">list</a>() -> <a href="./src/qanapi/types/v3/api_key_list_response.py">APIKeyListResponse</a></code>
 - <code title="post /v3/api-keys/{apiKey}/revoke">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">revoke</a>(api_key) -> None</code>
 - <code title="post /v3/api-keys/{apiKey}/rotate">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">rotate</a>(api_key) -> <a href="./src/qanapi/types/v3/api_key_rotate_response.py">APIKeyRotateResponse</a></code>
-- <code title="get /v3/api-keys/{apiKey}">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">show</a>(api_key) -> <a href="./src/qanapi/types/v3/api_key_show_response.py">APIKeyShowResponse</a></code>
+- <code title="get /v3/api-keys/{apiKey}">client.v3.api_keys.<a href="./src/qanapi/resources/v3/api_keys.py">show</a>(api_key) -> <a href="./src/qanapi/types/api_key.py">APIKey</a></code>
 
 ## Logs
 

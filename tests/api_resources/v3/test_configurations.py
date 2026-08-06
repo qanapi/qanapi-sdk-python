@@ -9,12 +9,8 @@ import pytest
 
 from qanapi import Qanapi, AsyncQanapi
 from tests.utils import assert_matches_type
-from qanapi.types.v3 import (
-    ConfigurationListResponse,
-    ConfigurationShowResponse,
-    ConfigurationCreateResponse,
-    ConfigurationUpdateResponse,
-)
+from qanapi.types import Configuration
+from qanapi.types.v3 import ConfigurationListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -29,7 +25,7 @@ class TestConfigurations:
             name="name",
             type="provider",
         )
-        assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -39,7 +35,7 @@ class TestConfigurations:
             type="provider",
             provider="google",
         )
-        assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -52,7 +48,7 @@ class TestConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = response.parse()
-        assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -65,7 +61,7 @@ class TestConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             configuration = response.parse()
-            assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+            assert_matches_type(Configuration, configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -76,7 +72,7 @@ class TestConfigurations:
             configuration="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             name="name",
         )
-        assert_matches_type(ConfigurationUpdateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -89,7 +85,7 @@ class TestConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = response.parse()
-        assert_matches_type(ConfigurationUpdateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -102,7 +98,7 @@ class TestConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             configuration = response.parse()
-            assert_matches_type(ConfigurationUpdateResponse, configuration, path=["response"])
+            assert_matches_type(Configuration, configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -191,7 +187,7 @@ class TestConfigurations:
         configuration = client.v3.configurations.show(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
-        assert_matches_type(ConfigurationShowResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -203,7 +199,7 @@ class TestConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = response.parse()
-        assert_matches_type(ConfigurationShowResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -215,7 +211,7 @@ class TestConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             configuration = response.parse()
-            assert_matches_type(ConfigurationShowResponse, configuration, path=["response"])
+            assert_matches_type(Configuration, configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -240,7 +236,7 @@ class TestAsyncConfigurations:
             name="name",
             type="provider",
         )
-        assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -250,7 +246,7 @@ class TestAsyncConfigurations:
             type="provider",
             provider="google",
         )
-        assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -263,7 +259,7 @@ class TestAsyncConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = await response.parse()
-        assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -276,7 +272,7 @@ class TestAsyncConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             configuration = await response.parse()
-            assert_matches_type(ConfigurationCreateResponse, configuration, path=["response"])
+            assert_matches_type(Configuration, configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -287,7 +283,7 @@ class TestAsyncConfigurations:
             configuration="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             name="name",
         )
-        assert_matches_type(ConfigurationUpdateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -300,7 +296,7 @@ class TestAsyncConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = await response.parse()
-        assert_matches_type(ConfigurationUpdateResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -313,7 +309,7 @@ class TestAsyncConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             configuration = await response.parse()
-            assert_matches_type(ConfigurationUpdateResponse, configuration, path=["response"])
+            assert_matches_type(Configuration, configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -402,7 +398,7 @@ class TestAsyncConfigurations:
         configuration = await async_client.v3.configurations.show(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
-        assert_matches_type(ConfigurationShowResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -414,7 +410,7 @@ class TestAsyncConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = await response.parse()
-        assert_matches_type(ConfigurationShowResponse, configuration, path=["response"])
+        assert_matches_type(Configuration, configuration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -426,7 +422,7 @@ class TestAsyncConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             configuration = await response.parse()
-            assert_matches_type(ConfigurationShowResponse, configuration, path=["response"])
+            assert_matches_type(Configuration, configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
