@@ -70,7 +70,7 @@ class AuthResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/auth/login",
+            "/v2/auth/login",
             body=maybe_transform(
                 {
                     "email": email,
@@ -96,7 +96,7 @@ class AuthResource(SyncAPIResource):
     ) -> AuthLogoutResponse:
         """Log out the current user"""
         return self._post(
-            "/auth/logout",
+            "/v2/auth/logout",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -115,7 +115,7 @@ class AuthResource(SyncAPIResource):
     ) -> AuthRefreshTokenResponse:
         """Refresh access token using refresh token"""
         return self._post(
-            "/auth/refresh",
+            "/v2/auth/refresh",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -134,7 +134,7 @@ class AuthResource(SyncAPIResource):
     ) -> AuthRetrieveUserDetailsResponse:
         """Retrieve user profile and roles"""
         return self._get(
-            "/auth/userdetails",
+            "/v2/auth/userdetails",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -153,7 +153,7 @@ class AuthResource(SyncAPIResource):
     ) -> AuthRevokeTokenResponse:
         """Revoke the current token"""
         return self._post(
-            "/auth/revoke",
+            "/v2/auth/revoke",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -206,7 +206,7 @@ class AsyncAuthResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/auth/login",
+            "/v2/auth/login",
             body=await async_maybe_transform(
                 {
                     "email": email,
@@ -232,7 +232,7 @@ class AsyncAuthResource(AsyncAPIResource):
     ) -> AuthLogoutResponse:
         """Log out the current user"""
         return await self._post(
-            "/auth/logout",
+            "/v2/auth/logout",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -251,7 +251,7 @@ class AsyncAuthResource(AsyncAPIResource):
     ) -> AuthRefreshTokenResponse:
         """Refresh access token using refresh token"""
         return await self._post(
-            "/auth/refresh",
+            "/v2/auth/refresh",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -270,7 +270,7 @@ class AsyncAuthResource(AsyncAPIResource):
     ) -> AuthRetrieveUserDetailsResponse:
         """Retrieve user profile and roles"""
         return await self._get(
-            "/auth/userdetails",
+            "/v2/auth/userdetails",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -289,7 +289,7 @@ class AsyncAuthResource(AsyncAPIResource):
     ) -> AuthRevokeTokenResponse:
         """Revoke the current token"""
         return await self._post(
-            "/auth/revoke",
+            "/v2/auth/revoke",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

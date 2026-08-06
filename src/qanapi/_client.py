@@ -99,7 +99,7 @@ class Qanapi(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("QANAPI_BASE_URL")
         if base_url is None:
-            base_url = f"https://{subdomain}.qanapi.cloud/api/v2"
+            base_url = f"https://{subdomain}.qanapi.cloud/api"
 
         custom_headers_env = os.environ.get("QANAPI_CUSTOM_HEADERS")
         if custom_headers_env is not None:
@@ -313,7 +313,7 @@ class AsyncQanapi(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("QANAPI_BASE_URL")
         if base_url is None:
-            base_url = f"https://{subdomain}.qanapi.cloud/api/v2"
+            base_url = f"https://{subdomain}.qanapi.cloud/api"
 
         custom_headers_env = os.environ.get("QANAPI_CUSTOM_HEADERS")
         if custom_headers_env is not None:

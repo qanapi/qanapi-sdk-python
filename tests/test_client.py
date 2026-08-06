@@ -938,7 +938,7 @@ class TestQanapi:
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Qanapi) -> None:
-        respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/v2/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             client.v2.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
@@ -948,7 +948,7 @@ class TestQanapi:
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Qanapi) -> None:
-        respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
+        respx_mock.post("/v2/auth/login").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             client.v2.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
@@ -978,7 +978,7 @@ class TestQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v2/auth/login").mock(side_effect=retry_handler)
 
         response = client.v2.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
@@ -1002,7 +1002,7 @@ class TestQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v2/auth/login").mock(side_effect=retry_handler)
 
         response = client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
@@ -1027,7 +1027,7 @@ class TestQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v2/auth/login").mock(side_effect=retry_handler)
 
         response = client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
@@ -1928,7 +1928,7 @@ class TestAsyncQanapi:
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncQanapi) -> None:
-        respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/v2/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             await async_client.v2.auth.with_streaming_response.login(
@@ -1940,7 +1940,7 @@ class TestAsyncQanapi:
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncQanapi) -> None:
-        respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
+        respx_mock.post("/v2/auth/login").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await async_client.v2.auth.with_streaming_response.login(
@@ -1972,7 +1972,7 @@ class TestAsyncQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v2/auth/login").mock(side_effect=retry_handler)
 
         response = await client.v2.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
 
@@ -1996,7 +1996,7 @@ class TestAsyncQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v2/auth/login").mock(side_effect=retry_handler)
 
         response = await client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
@@ -2021,7 +2021,7 @@ class TestAsyncQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v2/auth/login").mock(side_effect=retry_handler)
 
         response = await client.v2.auth.with_raw_response.login(
             email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}

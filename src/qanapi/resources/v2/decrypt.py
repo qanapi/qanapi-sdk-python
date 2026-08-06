@@ -85,7 +85,7 @@ class DecryptResource(SyncAPIResource):
         return cast(
             DecryptDecryptPayloadResponse,
             self._post(
-                "/decrypt",
+                "/v2/decrypt",
                 body=maybe_transform(
                     {
                         "data": data,
@@ -165,7 +165,7 @@ class AsyncDecryptResource(AsyncAPIResource):
         return cast(
             DecryptDecryptPayloadResponse,
             await self._post(
-                "/decrypt",
+                "/v2/decrypt",
                 body=await async_maybe_transform(
                     {
                         "data": data,
