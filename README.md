@@ -35,8 +35,8 @@ client = Qanapi(
 
 response = client.v3.encryption.encrypt(
     proxy="proxy",
-    data={"foo": "bar"},
-    x_qanapi_fields="x-qanapi-fields",
+    data={"password": "secret123"},
+    x_qanapi_fields="password",
 )
 ```
 
@@ -63,8 +63,8 @@ client = AsyncQanapi(
 async def main() -> None:
     response = await client.v3.encryption.encrypt(
         proxy="proxy",
-        data={"foo": "bar"},
-        x_qanapi_fields="x-qanapi-fields",
+        data={"password": "secret123"},
+        x_qanapi_fields="password",
     )
 
 
@@ -101,8 +101,8 @@ async def main() -> None:
     ) as client:
         response = await client.v3.encryption.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
-            x_qanapi_fields="x-qanapi-fields",
+            data={"password": "secret123"},
+            x_qanapi_fields="password",
         )
 
 
@@ -156,8 +156,8 @@ client = Qanapi(
 try:
     client.v3.encryption.encrypt(
         proxy="proxy",
-        data={"foo": "bar"},
-        x_qanapi_fields="x-qanapi-fields",
+        data={"password": "secret123"},
+        x_qanapi_fields="password",
     )
 except qanapi.APIConnectionError as e:
     print("The server could not be reached")
@@ -204,8 +204,8 @@ client = Qanapi(
 # Or, configure per-request:
 client.with_options(max_retries=5).v3.encryption.encrypt(
     proxy="proxy",
-    data={"foo": "bar"},
-    x_qanapi_fields="x-qanapi-fields",
+    data={"password": "secret123"},
+    x_qanapi_fields="password",
 )
 ```
 
@@ -233,8 +233,8 @@ client = Qanapi(
 # Override per-request:
 client.with_options(timeout=5.0).v3.encryption.encrypt(
     proxy="proxy",
-    data={"foo": "bar"},
-    x_qanapi_fields="x-qanapi-fields",
+    data={"password": "secret123"},
+    x_qanapi_fields="password",
 )
 ```
 
@@ -281,9 +281,9 @@ client = Qanapi(
 response = client.v3.encryption.with_raw_response.encrypt(
     proxy="proxy",
     data={
-        "foo": "bar"
+        "password": "secret123"
     },
-    x_qanapi_fields="x-qanapi-fields",
+    x_qanapi_fields="password",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -304,8 +304,8 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 ```python
 with client.v3.encryption.with_streaming_response.encrypt(
     proxy="proxy",
-    data={"foo": "bar"},
-    x_qanapi_fields="x-qanapi-fields",
+    data={"password": "secret123"},
+    x_qanapi_fields="password",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
