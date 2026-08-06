@@ -11,7 +11,7 @@ __all__ = ["EncryptionEncryptParams"]
 
 
 class EncryptionEncryptParams(TypedDict, total=False):
-    body: Required[Dict[str, object]]
+    data: Required[Dict[str, object]]
     """A JSON object to encrypt fields on. A maximum depth of 32 is allowed."""
 
     x_qanapi_fields: Required[Annotated[str, PropertyInfo(alias="x-qanapi-fields")]]

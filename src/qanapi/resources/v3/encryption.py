@@ -48,7 +48,7 @@ class EncryptionResource(SyncAPIResource):
         self,
         proxy: str,
         *,
-        body: Dict[str, object],
+        data: Dict[str, object],
         x_qanapi_fields: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -60,7 +60,7 @@ class EncryptionResource(SyncAPIResource):
         """Decrypt data
 
         Args:
-          body: A JSON object to decrypt fields on.
+          data: A JSON object to decrypt fields on.
 
         A maximum depth of 32 is allowed.
 
@@ -77,7 +77,7 @@ class EncryptionResource(SyncAPIResource):
         extra_headers = {**strip_not_given({"x-qanapi-fields": x_qanapi_fields}), **(extra_headers or {})}
         return self._post(
             path_template("/v3/encryption/{proxy}/decrypt", proxy=proxy),
-            body=maybe_transform(body, encryption_decrypt_params.EncryptionDecryptParams),
+            body=maybe_transform(data, encryption_decrypt_params.EncryptionDecryptParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -88,7 +88,7 @@ class EncryptionResource(SyncAPIResource):
         self,
         proxy: str,
         *,
-        body: Dict[str, object],
+        data: Dict[str, object],
         x_qanapi_fields: str,
         x_qanapi_destination: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -101,7 +101,7 @@ class EncryptionResource(SyncAPIResource):
         """Encrypt data
 
         Args:
-          body: A JSON object to encrypt fields on.
+          data: A JSON object to encrypt fields on.
 
         A maximum depth of 32 is allowed.
 
@@ -126,7 +126,7 @@ class EncryptionResource(SyncAPIResource):
         }
         return self._post(
             path_template("/v3/encryption/{proxy}/encrypt", proxy=proxy),
-            body=maybe_transform(body, encryption_encrypt_params.EncryptionEncryptParams),
+            body=maybe_transform(data, encryption_encrypt_params.EncryptionEncryptParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -158,7 +158,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
         self,
         proxy: str,
         *,
-        body: Dict[str, object],
+        data: Dict[str, object],
         x_qanapi_fields: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -170,7 +170,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
         """Decrypt data
 
         Args:
-          body: A JSON object to decrypt fields on.
+          data: A JSON object to decrypt fields on.
 
         A maximum depth of 32 is allowed.
 
@@ -187,7 +187,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
         extra_headers = {**strip_not_given({"x-qanapi-fields": x_qanapi_fields}), **(extra_headers or {})}
         return await self._post(
             path_template("/v3/encryption/{proxy}/decrypt", proxy=proxy),
-            body=await async_maybe_transform(body, encryption_decrypt_params.EncryptionDecryptParams),
+            body=await async_maybe_transform(data, encryption_decrypt_params.EncryptionDecryptParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -198,7 +198,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
         self,
         proxy: str,
         *,
-        body: Dict[str, object],
+        data: Dict[str, object],
         x_qanapi_fields: str,
         x_qanapi_destination: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -211,7 +211,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
         """Encrypt data
 
         Args:
-          body: A JSON object to encrypt fields on.
+          data: A JSON object to encrypt fields on.
 
         A maximum depth of 32 is allowed.
 
@@ -236,7 +236,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
         }
         return await self._post(
             path_template("/v3/encryption/{proxy}/encrypt", proxy=proxy),
-            body=await async_maybe_transform(body, encryption_encrypt_params.EncryptionEncryptParams),
+            body=await async_maybe_transform(data, encryption_encrypt_params.EncryptionEncryptParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
