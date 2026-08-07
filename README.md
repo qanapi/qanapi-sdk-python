@@ -34,7 +34,7 @@ client = Qanapi(
 )
 
 response = client.v3.encryption.encrypt(
-    proxy="proxy",
+    proxy="{proxy}",
     data={"password": "secret123"},
     x_qanapi_fields="password",
 )
@@ -62,7 +62,7 @@ client = AsyncQanapi(
 
 async def main() -> None:
     response = await client.v3.encryption.encrypt(
-        proxy="proxy",
+        proxy="{proxy}",
         data={"password": "secret123"},
         x_qanapi_fields="password",
     )
@@ -100,7 +100,7 @@ async def main() -> None:
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.v3.encryption.encrypt(
-            proxy="proxy",
+            proxy="{proxy}",
             data={"password": "secret123"},
             x_qanapi_fields="password",
         )
@@ -155,7 +155,7 @@ client = Qanapi(
 
 try:
     client.v3.encryption.encrypt(
-        proxy="proxy",
+        proxy="{proxy}",
         data={"password": "secret123"},
         x_qanapi_fields="password",
     )
@@ -203,7 +203,7 @@ client = Qanapi(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).v3.encryption.encrypt(
-    proxy="proxy",
+    proxy="{proxy}",
     data={"password": "secret123"},
     x_qanapi_fields="password",
 )
@@ -232,7 +232,7 @@ client = Qanapi(
 
 # Override per-request:
 client.with_options(timeout=5.0).v3.encryption.encrypt(
-    proxy="proxy",
+    proxy="{proxy}",
     data={"password": "secret123"},
     x_qanapi_fields="password",
 )
@@ -279,7 +279,7 @@ client = Qanapi(
     subdomain="My-Subdomain",
 )
 response = client.v3.encryption.with_raw_response.encrypt(
-    proxy="proxy",
+    proxy="{proxy}",
     data={
         "password": "secret123"
     },
@@ -303,7 +303,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.v3.encryption.with_streaming_response.encrypt(
-    proxy="proxy",
+    proxy="{proxy}",
     data={"password": "secret123"},
     x_qanapi_fields="password",
 ) as response:

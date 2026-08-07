@@ -18,16 +18,16 @@ from .v3 import (
 )
 
 __all__ = [
-    "V2Resource",
-    "AsyncV2Resource",
-    "V2ResourceWithRawResponse",
-    "AsyncV2ResourceWithRawResponse",
-    "V2ResourceWithStreamingResponse",
-    "AsyncV2ResourceWithStreamingResponse",
     "V3Resource",
     "AsyncV3Resource",
     "V3ResourceWithRawResponse",
     "AsyncV3ResourceWithRawResponse",
     "V3ResourceWithStreamingResponse",
     "AsyncV3ResourceWithStreamingResponse",
+    "V2Resource",
+    "AsyncV2Resource",
+    "V2ResourceWithRawResponse",
+    "AsyncV2ResourceWithRawResponse",
+    "V2ResourceWithStreamingResponse",
+    "AsyncV2ResourceWithStreamingResponse",
 ]
