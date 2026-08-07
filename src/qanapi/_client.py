@@ -123,16 +123,16 @@ class Qanapi(SyncAPIClient):
         )
 
     @cached_property
-    def v2(self) -> V2Resource:
-        from .resources.v2 import V2Resource
-
-        return V2Resource(self)
-
-    @cached_property
     def v3(self) -> V3Resource:
         from .resources.v3 import V3Resource
 
         return V3Resource(self)
+
+    @cached_property
+    def v2(self) -> V2Resource:
+        from .resources.v2 import V2Resource
+
+        return V2Resource(self)
 
     @cached_property
     def with_raw_response(self) -> QanapiWithRawResponse:
@@ -343,16 +343,16 @@ class AsyncQanapi(AsyncAPIClient):
         )
 
     @cached_property
-    def v2(self) -> AsyncV2Resource:
-        from .resources.v2 import AsyncV2Resource
-
-        return AsyncV2Resource(self)
-
-    @cached_property
     def v3(self) -> AsyncV3Resource:
         from .resources.v3 import AsyncV3Resource
 
         return AsyncV3Resource(self)
+
+    @cached_property
+    def v2(self) -> AsyncV2Resource:
+        from .resources.v2 import AsyncV2Resource
+
+        return AsyncV2Resource(self)
 
     @cached_property
     def with_raw_response(self) -> AsyncQanapiWithRawResponse:
@@ -489,16 +489,16 @@ class QanapiWithRawResponse:
         self._client = client
 
     @cached_property
-    def v2(self) -> v2.V2ResourceWithRawResponse:
-        from .resources.v2 import V2ResourceWithRawResponse
-
-        return V2ResourceWithRawResponse(self._client.v2)
-
-    @cached_property
     def v3(self) -> v3.V3ResourceWithRawResponse:
         from .resources.v3 import V3ResourceWithRawResponse
 
         return V3ResourceWithRawResponse(self._client.v3)
+
+    @cached_property
+    def v2(self) -> v2.V2ResourceWithRawResponse:
+        from .resources.v2 import V2ResourceWithRawResponse
+
+        return V2ResourceWithRawResponse(self._client.v2)
 
 
 class AsyncQanapiWithRawResponse:
@@ -508,16 +508,16 @@ class AsyncQanapiWithRawResponse:
         self._client = client
 
     @cached_property
-    def v2(self) -> v2.AsyncV2ResourceWithRawResponse:
-        from .resources.v2 import AsyncV2ResourceWithRawResponse
-
-        return AsyncV2ResourceWithRawResponse(self._client.v2)
-
-    @cached_property
     def v3(self) -> v3.AsyncV3ResourceWithRawResponse:
         from .resources.v3 import AsyncV3ResourceWithRawResponse
 
         return AsyncV3ResourceWithRawResponse(self._client.v3)
+
+    @cached_property
+    def v2(self) -> v2.AsyncV2ResourceWithRawResponse:
+        from .resources.v2 import AsyncV2ResourceWithRawResponse
+
+        return AsyncV2ResourceWithRawResponse(self._client.v2)
 
 
 class QanapiWithStreamedResponse:
@@ -527,16 +527,16 @@ class QanapiWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def v2(self) -> v2.V2ResourceWithStreamingResponse:
-        from .resources.v2 import V2ResourceWithStreamingResponse
-
-        return V2ResourceWithStreamingResponse(self._client.v2)
-
-    @cached_property
     def v3(self) -> v3.V3ResourceWithStreamingResponse:
         from .resources.v3 import V3ResourceWithStreamingResponse
 
         return V3ResourceWithStreamingResponse(self._client.v3)
+
+    @cached_property
+    def v2(self) -> v2.V2ResourceWithStreamingResponse:
+        from .resources.v2 import V2ResourceWithStreamingResponse
+
+        return V2ResourceWithStreamingResponse(self._client.v2)
 
 
 class AsyncQanapiWithStreamedResponse:
@@ -546,16 +546,16 @@ class AsyncQanapiWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def v2(self) -> v2.AsyncV2ResourceWithStreamingResponse:
-        from .resources.v2 import AsyncV2ResourceWithStreamingResponse
-
-        return AsyncV2ResourceWithStreamingResponse(self._client.v2)
-
-    @cached_property
     def v3(self) -> v3.AsyncV3ResourceWithStreamingResponse:
         from .resources.v3 import AsyncV3ResourceWithStreamingResponse
 
         return AsyncV3ResourceWithStreamingResponse(self._client.v3)
+
+    @cached_property
+    def v2(self) -> v2.AsyncV2ResourceWithStreamingResponse:
+        from .resources.v2 import AsyncV2ResourceWithStreamingResponse
+
+        return AsyncV2ResourceWithStreamingResponse(self._client.v2)
 
 
 Client = Qanapi
