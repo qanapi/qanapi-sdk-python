@@ -23,7 +23,7 @@ from qanapi import Qanapi, AsyncQanapi, APIResponseValidationError
 from qanapi._types import Omit
 from qanapi._utils import asyncify
 from qanapi._models import BaseModel, FinalRequestOptions
-from qanapi._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from qanapi._exceptions import QanapiError, APIStatusError, APITimeoutError, APIResponseValidationError
 from qanapi._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -433,6 +433,16 @@ class TestQanapi:
 
         test_client.close()
         test_client2.close()
+
+    def test_validate_headers(self) -> None:
+        client = Qanapi(base_url=base_url, api_key=api_key, subdomain=subdomain, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-qanapi-authorization") == api_key
+
+        with pytest.raises(QanapiError):
+            with update_env(**{"QANAPI_API_KEY": Omit()}):
+                client2 = Qanapi(base_url=base_url, api_key=None, subdomain=subdomain, _strict_response_validation=True)
+            _ = client2
 
     def test_default_query_option(self) -> None:
         client = Qanapi(
@@ -1426,6 +1436,18 @@ class TestAsyncQanapi:
 
         await test_client.close()
         await test_client2.close()
+
+    def test_validate_headers(self) -> None:
+        client = AsyncQanapi(base_url=base_url, api_key=api_key, subdomain=subdomain, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-qanapi-authorization") == api_key
+
+        with pytest.raises(QanapiError):
+            with update_env(**{"QANAPI_API_KEY": Omit()}):
+                client2 = AsyncQanapi(
+                    base_url=base_url, api_key=None, subdomain=subdomain, _strict_response_validation=True
+                )
+            _ = client2
 
     async def test_default_query_option(self) -> None:
         client = AsyncQanapi(
