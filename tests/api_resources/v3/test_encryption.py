@@ -26,15 +26,6 @@ class TestEncryption:
         encryption = client.v3.encryption.decrypt(
             proxy="proxy",
             data={"foo": "bar"},
-        )
-        assert_matches_type(EncryptionDecryptResponse, encryption, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_decrypt_with_all_params(self, client: Qanapi) -> None:
-        encryption = client.v3.encryption.decrypt(
-            proxy="proxy",
-            data={"foo": "bar"},
             x_qanapi_fields="x-qanapi-fields",
         )
         assert_matches_type(EncryptionDecryptResponse, encryption, path=["response"])
@@ -45,6 +36,7 @@ class TestEncryption:
         response = client.v3.encryption.with_raw_response.decrypt(
             proxy="proxy",
             data={"foo": "bar"},
+            x_qanapi_fields="x-qanapi-fields",
         )
 
         assert response.is_closed is True
@@ -58,6 +50,7 @@ class TestEncryption:
         with client.v3.encryption.with_streaming_response.decrypt(
             proxy="proxy",
             data={"foo": "bar"},
+            x_qanapi_fields="x-qanapi-fields",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,6 +67,7 @@ class TestEncryption:
             client.v3.encryption.with_raw_response.decrypt(
                 proxy="",
                 data={"foo": "bar"},
+                x_qanapi_fields="x-qanapi-fields",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -149,15 +143,6 @@ class TestAsyncEncryption:
         encryption = await async_client.v3.encryption.decrypt(
             proxy="proxy",
             data={"foo": "bar"},
-        )
-        assert_matches_type(EncryptionDecryptResponse, encryption, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_decrypt_with_all_params(self, async_client: AsyncQanapi) -> None:
-        encryption = await async_client.v3.encryption.decrypt(
-            proxy="proxy",
-            data={"foo": "bar"},
             x_qanapi_fields="x-qanapi-fields",
         )
         assert_matches_type(EncryptionDecryptResponse, encryption, path=["response"])
@@ -168,6 +153,7 @@ class TestAsyncEncryption:
         response = await async_client.v3.encryption.with_raw_response.decrypt(
             proxy="proxy",
             data={"foo": "bar"},
+            x_qanapi_fields="x-qanapi-fields",
         )
 
         assert response.is_closed is True
@@ -181,6 +167,7 @@ class TestAsyncEncryption:
         async with async_client.v3.encryption.with_streaming_response.decrypt(
             proxy="proxy",
             data={"foo": "bar"},
+            x_qanapi_fields="x-qanapi-fields",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -197,6 +184,7 @@ class TestAsyncEncryption:
             await async_client.v3.encryption.with_raw_response.decrypt(
                 proxy="",
                 data={"foo": "bar"},
+                x_qanapi_fields="x-qanapi-fields",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
