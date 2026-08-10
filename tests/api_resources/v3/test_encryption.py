@@ -25,7 +25,13 @@ class TestEncryption:
     def test_method_decrypt(self, client: Qanapi) -> None:
         encryption = client.v3.encryption.decrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
         assert_matches_type(EncryptionDecryptResponse, encryption, path=["response"])
@@ -35,7 +41,13 @@ class TestEncryption:
     def test_raw_response_decrypt(self, client: Qanapi) -> None:
         response = client.v3.encryption.with_raw_response.decrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
 
@@ -49,7 +61,13 @@ class TestEncryption:
     def test_streaming_response_decrypt(self, client: Qanapi) -> None:
         with client.v3.encryption.with_streaming_response.decrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         ) as response:
             assert not response.is_closed
@@ -66,7 +84,13 @@ class TestEncryption:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `proxy` but received ''"):
             client.v3.encryption.with_raw_response.decrypt(
                 proxy="",
-                data={"foo": "bar"},
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
                 x_qanapi_fields="x-qanapi-fields",
             )
 
@@ -75,7 +99,13 @@ class TestEncryption:
     def test_method_encrypt(self, client: Qanapi) -> None:
         encryption = client.v3.encryption.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
         assert_matches_type(EncryptionEncryptResponse, encryption, path=["response"])
@@ -85,7 +115,13 @@ class TestEncryption:
     def test_method_encrypt_with_all_params(self, client: Qanapi) -> None:
         encryption = client.v3.encryption.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
             x_qanapi_destination="x-qanapi-destination",
         )
@@ -96,7 +132,13 @@ class TestEncryption:
     def test_raw_response_encrypt(self, client: Qanapi) -> None:
         response = client.v3.encryption.with_raw_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
 
@@ -110,7 +152,13 @@ class TestEncryption:
     def test_streaming_response_encrypt(self, client: Qanapi) -> None:
         with client.v3.encryption.with_streaming_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         ) as response:
             assert not response.is_closed
@@ -127,7 +175,13 @@ class TestEncryption:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `proxy` but received ''"):
             client.v3.encryption.with_raw_response.encrypt(
                 proxy="",
-                data={"foo": "bar"},
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
                 x_qanapi_fields="x-qanapi-fields",
             )
 
@@ -142,7 +196,13 @@ class TestAsyncEncryption:
     async def test_method_decrypt(self, async_client: AsyncQanapi) -> None:
         encryption = await async_client.v3.encryption.decrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
         assert_matches_type(EncryptionDecryptResponse, encryption, path=["response"])
@@ -152,7 +212,13 @@ class TestAsyncEncryption:
     async def test_raw_response_decrypt(self, async_client: AsyncQanapi) -> None:
         response = await async_client.v3.encryption.with_raw_response.decrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
 
@@ -166,7 +232,13 @@ class TestAsyncEncryption:
     async def test_streaming_response_decrypt(self, async_client: AsyncQanapi) -> None:
         async with async_client.v3.encryption.with_streaming_response.decrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         ) as response:
             assert not response.is_closed
@@ -183,7 +255,13 @@ class TestAsyncEncryption:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `proxy` but received ''"):
             await async_client.v3.encryption.with_raw_response.decrypt(
                 proxy="",
-                data={"foo": "bar"},
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
                 x_qanapi_fields="x-qanapi-fields",
             )
 
@@ -192,7 +270,13 @@ class TestAsyncEncryption:
     async def test_method_encrypt(self, async_client: AsyncQanapi) -> None:
         encryption = await async_client.v3.encryption.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
         assert_matches_type(EncryptionEncryptResponse, encryption, path=["response"])
@@ -202,7 +286,13 @@ class TestAsyncEncryption:
     async def test_method_encrypt_with_all_params(self, async_client: AsyncQanapi) -> None:
         encryption = await async_client.v3.encryption.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
             x_qanapi_destination="x-qanapi-destination",
         )
@@ -213,7 +303,13 @@ class TestAsyncEncryption:
     async def test_raw_response_encrypt(self, async_client: AsyncQanapi) -> None:
         response = await async_client.v3.encryption.with_raw_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         )
 
@@ -227,7 +323,13 @@ class TestAsyncEncryption:
     async def test_streaming_response_encrypt(self, async_client: AsyncQanapi) -> None:
         async with async_client.v3.encryption.with_streaming_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
         ) as response:
             assert not response.is_closed
@@ -244,6 +346,12 @@ class TestAsyncEncryption:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `proxy` but received ''"):
             await async_client.v3.encryption.with_raw_response.encrypt(
                 proxy="",
-                data={"foo": "bar"},
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
                 x_qanapi_fields="x-qanapi-fields",
             )

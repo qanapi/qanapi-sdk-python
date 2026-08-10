@@ -58,7 +58,7 @@ class EncryptResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EncryptEncryptDataResponse:
         """
-        Encrypt data with optional ACL
+        Encrypt data
 
         Args:
           data: The actual data to encrypt.
@@ -149,7 +149,7 @@ class AsyncEncryptResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EncryptEncryptDataResponse:
         """
-        Encrypt data with optional ACL
+        Encrypt data
 
         Args:
           data: The actual data to encrypt.
