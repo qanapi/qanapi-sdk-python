@@ -23,7 +23,7 @@ from qanapi import Qanapi, AsyncQanapi, APIResponseValidationError
 from qanapi._types import Omit
 from qanapi._utils import asyncify
 from qanapi._models import BaseModel, FinalRequestOptions
-from qanapi._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from qanapi._exceptions import QanapiError, APIStatusError, APITimeoutError, APIResponseValidationError
 from qanapi._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -433,6 +433,16 @@ class TestQanapi:
 
         test_client.close()
         test_client2.close()
+
+    def test_validate_headers(self) -> None:
+        client = Qanapi(base_url=base_url, api_key=api_key, subdomain=subdomain, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-qanapi-authorization") == api_key
+
+        with pytest.raises(QanapiError):
+            with update_env(**{"QANAPI_API_KEY": Omit()}):
+                client2 = Qanapi(base_url=base_url, api_key=None, subdomain=subdomain, _strict_response_validation=True)
+            _ = client2
 
     def test_default_query_option(self) -> None:
         client = Qanapi(
@@ -938,20 +948,40 @@ class TestQanapi:
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Qanapi) -> None:
-        respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            client.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
+            client.v3.encryption.with_streaming_response.encrypt(
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
+            ).__enter__()
 
         assert _get_open_connections(client) == 0
 
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Qanapi) -> None:
-        respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            client.auth.with_streaming_response.login(email="valid@email.com", password="secret1234").__enter__()
+            client.v3.encryption.with_streaming_response.encrypt(
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
+            ).__enter__()
         assert _get_open_connections(client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -978,9 +1008,19 @@ class TestQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
+        response = client.v3.encryption.with_raw_response.encrypt(
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
+        )
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1002,10 +1042,19 @@ class TestQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
+        response = client.v3.encryption.with_raw_response.encrypt(
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
+            extra_headers={"x-stainless-retry-count": Omit()},
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1027,10 +1076,19 @@ class TestQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
-        response = client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
+        response = client.v3.encryption.with_raw_response.encrypt(
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
+            extra_headers={"x-stainless-retry-count": "42"},
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -1414,6 +1472,18 @@ class TestAsyncQanapi:
 
         await test_client.close()
         await test_client2.close()
+
+    def test_validate_headers(self) -> None:
+        client = AsyncQanapi(base_url=base_url, api_key=api_key, subdomain=subdomain, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-qanapi-authorization") == api_key
+
+        with pytest.raises(QanapiError):
+            with update_env(**{"QANAPI_API_KEY": Omit()}):
+                client2 = AsyncQanapi(
+                    base_url=base_url, api_key=None, subdomain=subdomain, _strict_response_validation=True
+                )
+            _ = client2
 
     async def test_default_query_option(self) -> None:
         client = AsyncQanapi(
@@ -1928,11 +1998,19 @@ class TestAsyncQanapi:
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncQanapi) -> None:
-        respx_mock.post("/auth/login").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await async_client.auth.with_streaming_response.login(
-                email="valid@email.com", password="secret1234"
+            await async_client.v3.encryption.with_streaming_response.encrypt(
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
             ).__aenter__()
 
         assert _get_open_connections(async_client) == 0
@@ -1940,11 +2018,19 @@ class TestAsyncQanapi:
     @mock.patch("qanapi._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncQanapi) -> None:
-        respx_mock.post("/auth/login").mock(return_value=httpx.Response(500))
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await async_client.auth.with_streaming_response.login(
-                email="valid@email.com", password="secret1234"
+            await async_client.v3.encryption.with_streaming_response.encrypt(
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
             ).__aenter__()
         assert _get_open_connections(async_client) == 0
 
@@ -1972,9 +2058,19 @@ class TestAsyncQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(email="valid@email.com", password="secret1234")
+        response = await client.v3.encryption.with_raw_response.encrypt(
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
+        )
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1996,10 +2092,19 @@ class TestAsyncQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": Omit()}
+        response = await client.v3.encryption.with_raw_response.encrypt(
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
+            extra_headers={"x-stainless-retry-count": Omit()},
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -2021,10 +2126,19 @@ class TestAsyncQanapi:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/auth/login").mock(side_effect=retry_handler)
+        respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
-        response = await client.auth.with_raw_response.login(
-            email="valid@email.com", password="secret1234", extra_headers={"x-stainless-retry-count": "42"}
+        response = await client.v3.encryption.with_raw_response.encrypt(
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
+            extra_headers={"x-stainless-retry-count": "42"},
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"

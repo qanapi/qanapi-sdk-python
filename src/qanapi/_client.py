@@ -35,11 +35,9 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import auth, decrypt, encrypt, api_keys
-    from .resources.auth import AuthResource, AsyncAuthResource
-    from .resources.decrypt import DecryptResource, AsyncDecryptResource
-    from .resources.encrypt import EncryptResource, AsyncEncryptResource
-    from .resources.api_keys import APIKeysResource, AsyncAPIKeysResource
+    from .resources import v2, v3
+    from .resources.v2.v2 import V2Resource, AsyncV2Resource
+    from .resources.v3.v3 import V3Resource, AsyncV3Resource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Qanapi", "AsyncQanapi", "Client", "AsyncClient"]
 
@@ -102,7 +100,7 @@ class Qanapi(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("QANAPI_BASE_URL")
         if base_url is None:
-            base_url = f"https://{subdomain}.qanapi.cloud/api/v2"
+            base_url = f"https://{subdomain}.qanapi.cloud/api"
 
         custom_headers_env = os.environ.get("QANAPI_CUSTOM_HEADERS")
         if custom_headers_env is not None:
@@ -125,28 +123,16 @@ class Qanapi(SyncAPIClient):
         )
 
     @cached_property
-    def auth(self) -> AuthResource:
-        from .resources.auth import AuthResource
+    def v3(self) -> V3Resource:
+        from .resources.v3 import V3Resource
 
-        return AuthResource(self)
-
-    @cached_property
-    def encrypt(self) -> EncryptResource:
-        from .resources.encrypt import EncryptResource
-
-        return EncryptResource(self)
+        return V3Resource(self)
 
     @cached_property
-    def decrypt(self) -> DecryptResource:
-        from .resources.decrypt import DecryptResource
+    def v2(self) -> V2Resource:
+        from .resources.v2 import V2Resource
 
-        return DecryptResource(self)
-
-    @cached_property
-    def api_keys(self) -> APIKeysResource:
-        from .resources.api_keys import APIKeysResource
-
-        return APIKeysResource(self)
+        return V2Resource(self)
 
     @cached_property
     def with_raw_response(self) -> QanapiWithRawResponse:
@@ -334,7 +320,7 @@ class AsyncQanapi(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("QANAPI_BASE_URL")
         if base_url is None:
-            base_url = f"https://{subdomain}.qanapi.cloud/api/v2"
+            base_url = f"https://{subdomain}.qanapi.cloud/api"
 
         custom_headers_env = os.environ.get("QANAPI_CUSTOM_HEADERS")
         if custom_headers_env is not None:
@@ -357,28 +343,16 @@ class AsyncQanapi(AsyncAPIClient):
         )
 
     @cached_property
-    def auth(self) -> AsyncAuthResource:
-        from .resources.auth import AsyncAuthResource
+    def v3(self) -> AsyncV3Resource:
+        from .resources.v3 import AsyncV3Resource
 
-        return AsyncAuthResource(self)
-
-    @cached_property
-    def encrypt(self) -> AsyncEncryptResource:
-        from .resources.encrypt import AsyncEncryptResource
-
-        return AsyncEncryptResource(self)
+        return AsyncV3Resource(self)
 
     @cached_property
-    def decrypt(self) -> AsyncDecryptResource:
-        from .resources.decrypt import AsyncDecryptResource
+    def v2(self) -> AsyncV2Resource:
+        from .resources.v2 import AsyncV2Resource
 
-        return AsyncDecryptResource(self)
-
-    @cached_property
-    def api_keys(self) -> AsyncAPIKeysResource:
-        from .resources.api_keys import AsyncAPIKeysResource
-
-        return AsyncAPIKeysResource(self)
+        return AsyncV2Resource(self)
 
     @cached_property
     def with_raw_response(self) -> AsyncQanapiWithRawResponse:
@@ -515,28 +489,16 @@ class QanapiWithRawResponse:
         self._client = client
 
     @cached_property
-    def auth(self) -> auth.AuthResourceWithRawResponse:
-        from .resources.auth import AuthResourceWithRawResponse
+    def v3(self) -> v3.V3ResourceWithRawResponse:
+        from .resources.v3 import V3ResourceWithRawResponse
 
-        return AuthResourceWithRawResponse(self._client.auth)
-
-    @cached_property
-    def encrypt(self) -> encrypt.EncryptResourceWithRawResponse:
-        from .resources.encrypt import EncryptResourceWithRawResponse
-
-        return EncryptResourceWithRawResponse(self._client.encrypt)
+        return V3ResourceWithRawResponse(self._client.v3)
 
     @cached_property
-    def decrypt(self) -> decrypt.DecryptResourceWithRawResponse:
-        from .resources.decrypt import DecryptResourceWithRawResponse
+    def v2(self) -> v2.V2ResourceWithRawResponse:
+        from .resources.v2 import V2ResourceWithRawResponse
 
-        return DecryptResourceWithRawResponse(self._client.decrypt)
-
-    @cached_property
-    def api_keys(self) -> api_keys.APIKeysResourceWithRawResponse:
-        from .resources.api_keys import APIKeysResourceWithRawResponse
-
-        return APIKeysResourceWithRawResponse(self._client.api_keys)
+        return V2ResourceWithRawResponse(self._client.v2)
 
 
 class AsyncQanapiWithRawResponse:
@@ -546,28 +508,16 @@ class AsyncQanapiWithRawResponse:
         self._client = client
 
     @cached_property
-    def auth(self) -> auth.AsyncAuthResourceWithRawResponse:
-        from .resources.auth import AsyncAuthResourceWithRawResponse
+    def v3(self) -> v3.AsyncV3ResourceWithRawResponse:
+        from .resources.v3 import AsyncV3ResourceWithRawResponse
 
-        return AsyncAuthResourceWithRawResponse(self._client.auth)
-
-    @cached_property
-    def encrypt(self) -> encrypt.AsyncEncryptResourceWithRawResponse:
-        from .resources.encrypt import AsyncEncryptResourceWithRawResponse
-
-        return AsyncEncryptResourceWithRawResponse(self._client.encrypt)
+        return AsyncV3ResourceWithRawResponse(self._client.v3)
 
     @cached_property
-    def decrypt(self) -> decrypt.AsyncDecryptResourceWithRawResponse:
-        from .resources.decrypt import AsyncDecryptResourceWithRawResponse
+    def v2(self) -> v2.AsyncV2ResourceWithRawResponse:
+        from .resources.v2 import AsyncV2ResourceWithRawResponse
 
-        return AsyncDecryptResourceWithRawResponse(self._client.decrypt)
-
-    @cached_property
-    def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithRawResponse:
-        from .resources.api_keys import AsyncAPIKeysResourceWithRawResponse
-
-        return AsyncAPIKeysResourceWithRawResponse(self._client.api_keys)
+        return AsyncV2ResourceWithRawResponse(self._client.v2)
 
 
 class QanapiWithStreamedResponse:
@@ -577,28 +527,16 @@ class QanapiWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def auth(self) -> auth.AuthResourceWithStreamingResponse:
-        from .resources.auth import AuthResourceWithStreamingResponse
+    def v3(self) -> v3.V3ResourceWithStreamingResponse:
+        from .resources.v3 import V3ResourceWithStreamingResponse
 
-        return AuthResourceWithStreamingResponse(self._client.auth)
-
-    @cached_property
-    def encrypt(self) -> encrypt.EncryptResourceWithStreamingResponse:
-        from .resources.encrypt import EncryptResourceWithStreamingResponse
-
-        return EncryptResourceWithStreamingResponse(self._client.encrypt)
+        return V3ResourceWithStreamingResponse(self._client.v3)
 
     @cached_property
-    def decrypt(self) -> decrypt.DecryptResourceWithStreamingResponse:
-        from .resources.decrypt import DecryptResourceWithStreamingResponse
+    def v2(self) -> v2.V2ResourceWithStreamingResponse:
+        from .resources.v2 import V2ResourceWithStreamingResponse
 
-        return DecryptResourceWithStreamingResponse(self._client.decrypt)
-
-    @cached_property
-    def api_keys(self) -> api_keys.APIKeysResourceWithStreamingResponse:
-        from .resources.api_keys import APIKeysResourceWithStreamingResponse
-
-        return APIKeysResourceWithStreamingResponse(self._client.api_keys)
+        return V2ResourceWithStreamingResponse(self._client.v2)
 
 
 class AsyncQanapiWithStreamedResponse:
@@ -608,28 +546,16 @@ class AsyncQanapiWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def auth(self) -> auth.AsyncAuthResourceWithStreamingResponse:
-        from .resources.auth import AsyncAuthResourceWithStreamingResponse
+    def v3(self) -> v3.AsyncV3ResourceWithStreamingResponse:
+        from .resources.v3 import AsyncV3ResourceWithStreamingResponse
 
-        return AsyncAuthResourceWithStreamingResponse(self._client.auth)
-
-    @cached_property
-    def encrypt(self) -> encrypt.AsyncEncryptResourceWithStreamingResponse:
-        from .resources.encrypt import AsyncEncryptResourceWithStreamingResponse
-
-        return AsyncEncryptResourceWithStreamingResponse(self._client.encrypt)
+        return AsyncV3ResourceWithStreamingResponse(self._client.v3)
 
     @cached_property
-    def decrypt(self) -> decrypt.AsyncDecryptResourceWithStreamingResponse:
-        from .resources.decrypt import AsyncDecryptResourceWithStreamingResponse
+    def v2(self) -> v2.AsyncV2ResourceWithStreamingResponse:
+        from .resources.v2 import AsyncV2ResourceWithStreamingResponse
 
-        return AsyncDecryptResourceWithStreamingResponse(self._client.decrypt)
-
-    @cached_property
-    def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithStreamingResponse:
-        from .resources.api_keys import AsyncAPIKeysResourceWithStreamingResponse
-
-        return AsyncAPIKeysResourceWithStreamingResponse(self._client.api_keys)
+        return AsyncV2ResourceWithStreamingResponse(self._client.v2)
 
 
 Client = Qanapi
