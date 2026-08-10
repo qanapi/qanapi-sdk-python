@@ -58,7 +58,7 @@ class AuthResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthLoginResponse:
         """
-        Authenticate user and return JWT
+        Login
 
         Args:
           extra_headers: Send extra headers
@@ -94,7 +94,7 @@ class AuthResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthLogoutResponse:
-        """Log out the current user"""
+        """Logout"""
         return self._post(
             "/v2/auth/logout",
             options=make_request_options(
@@ -113,7 +113,7 @@ class AuthResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthRefreshTokenResponse:
-        """Refresh access token using refresh token"""
+        """Refresh token"""
         return self._post(
             "/v2/auth/refresh",
             options=make_request_options(
@@ -132,7 +132,7 @@ class AuthResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthRetrieveUserDetailsResponse:
-        """Retrieve user profile and roles"""
+        """Get user details"""
         return self._get(
             "/v2/auth/userdetails",
             options=make_request_options(
@@ -151,7 +151,7 @@ class AuthResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthRevokeTokenResponse:
-        """Revoke the current token"""
+        """Revoke token"""
         return self._post(
             "/v2/auth/revoke",
             options=make_request_options(
@@ -194,7 +194,7 @@ class AsyncAuthResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthLoginResponse:
         """
-        Authenticate user and return JWT
+        Login
 
         Args:
           extra_headers: Send extra headers
@@ -230,7 +230,7 @@ class AsyncAuthResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthLogoutResponse:
-        """Log out the current user"""
+        """Logout"""
         return await self._post(
             "/v2/auth/logout",
             options=make_request_options(
@@ -249,7 +249,7 @@ class AsyncAuthResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthRefreshTokenResponse:
-        """Refresh access token using refresh token"""
+        """Refresh token"""
         return await self._post(
             "/v2/auth/refresh",
             options=make_request_options(
@@ -268,7 +268,7 @@ class AsyncAuthResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthRetrieveUserDetailsResponse:
-        """Retrieve user profile and roles"""
+        """Get user details"""
         return await self._get(
             "/v2/auth/userdetails",
             options=make_request_options(
@@ -287,7 +287,7 @@ class AsyncAuthResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthRevokeTokenResponse:
-        """Revoke the current token"""
+        """Revoke token"""
         return await self._post(
             "/v2/auth/revoke",
             options=make_request_options(

@@ -56,7 +56,7 @@ class DecryptResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DecryptDecryptPayloadResponse:
         """
-        Decrypt encrypted payload
+        Decrypt data
 
         Args:
           data: The encrypted payload to decrypt.
@@ -136,7 +136,7 @@ class AsyncDecryptResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DecryptDecryptPayloadResponse:
         """
-        Decrypt encrypted payload
+        Decrypt data
 
         Args:
           data: The encrypted payload to decrypt.

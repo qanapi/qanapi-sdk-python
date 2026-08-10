@@ -952,7 +952,15 @@ class TestQanapi:
 
         with pytest.raises(APITimeoutError):
             client.v3.encryption.with_streaming_response.encrypt(
-                proxy="proxy", data={"foo": "bar"}, x_qanapi_fields="x-qanapi-fields"
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
             ).__enter__()
 
         assert _get_open_connections(client) == 0
@@ -964,7 +972,15 @@ class TestQanapi:
 
         with pytest.raises(APIStatusError):
             client.v3.encryption.with_streaming_response.encrypt(
-                proxy="proxy", data={"foo": "bar"}, x_qanapi_fields="x-qanapi-fields"
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
             ).__enter__()
         assert _get_open_connections(client) == 0
 
@@ -995,7 +1011,15 @@ class TestQanapi:
         respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
         response = client.v3.encryption.with_raw_response.encrypt(
-            proxy="proxy", data={"foo": "bar"}, x_qanapi_fields="x-qanapi-fields"
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
         )
 
         assert response.retries_taken == failures_before_success
@@ -1022,7 +1046,13 @@ class TestQanapi:
 
         response = client.v3.encryption.with_raw_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
@@ -1050,7 +1080,13 @@ class TestQanapi:
 
         response = client.v3.encryption.with_raw_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
             extra_headers={"x-stainless-retry-count": "42"},
         )
@@ -1966,7 +2002,15 @@ class TestAsyncQanapi:
 
         with pytest.raises(APITimeoutError):
             await async_client.v3.encryption.with_streaming_response.encrypt(
-                proxy="proxy", data={"foo": "bar"}, x_qanapi_fields="x-qanapi-fields"
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
             ).__aenter__()
 
         assert _get_open_connections(async_client) == 0
@@ -1978,7 +2022,15 @@ class TestAsyncQanapi:
 
         with pytest.raises(APIStatusError):
             await async_client.v3.encryption.with_streaming_response.encrypt(
-                proxy="proxy", data={"foo": "bar"}, x_qanapi_fields="x-qanapi-fields"
+                proxy="proxy",
+                data={
+                    "name": "bar",
+                    "email": "bar",
+                    "ssn": "bar",
+                    "dob": "bar",
+                    "address": "bar",
+                },
+                x_qanapi_fields="x-qanapi-fields",
             ).__aenter__()
         assert _get_open_connections(async_client) == 0
 
@@ -2009,7 +2061,15 @@ class TestAsyncQanapi:
         respx_mock.post("/v3/encryption/proxy/encrypt").mock(side_effect=retry_handler)
 
         response = await client.v3.encryption.with_raw_response.encrypt(
-            proxy="proxy", data={"foo": "bar"}, x_qanapi_fields="x-qanapi-fields"
+            proxy="proxy",
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
+            x_qanapi_fields="x-qanapi-fields",
         )
 
         assert response.retries_taken == failures_before_success
@@ -2036,7 +2096,13 @@ class TestAsyncQanapi:
 
         response = await client.v3.encryption.with_raw_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
@@ -2064,7 +2130,13 @@ class TestAsyncQanapi:
 
         response = await client.v3.encryption.with_raw_response.encrypt(
             proxy="proxy",
-            data={"foo": "bar"},
+            data={
+                "name": "bar",
+                "email": "bar",
+                "ssn": "bar",
+                "dob": "bar",
+                "address": "bar",
+            },
             x_qanapi_fields="x-qanapi-fields",
             extra_headers={"x-stainless-retry-count": "42"},
         )

@@ -53,7 +53,7 @@ class APIKeysResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIKeyRevokeResponse:
         """
-        Revoke an API Key
+        Revoke API Key
 
         Args:
           extra_headers: Send extra headers
@@ -86,7 +86,7 @@ class APIKeysResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIKeyRotateResponse:
         """
-        Rotate an API Key
+        Rotate API Key
 
         Args:
           extra_headers: Send extra headers
@@ -140,7 +140,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIKeyRevokeResponse:
         """
-        Revoke an API Key
+        Revoke API Key
 
         Args:
           extra_headers: Send extra headers
@@ -173,7 +173,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIKeyRotateResponse:
         """
-        Rotate an API Key
+        Rotate API Key
 
         Args:
           extra_headers: Send extra headers
