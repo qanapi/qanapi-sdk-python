@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.14.0 (2026-08-10)
+
+Full Changelog: [v1.13.1...v1.14.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.13.1...v1.14.0)
+
+### Features
+
+* **api:** add all v2 routes to a sub resource ([1a94777](https://github.com/qanapi/qanapi-sdk-python/commit/1a94777e7f068a321e5d6b8305cb60e1e79890c8))
+* **api:** Add API V3 support ([a42a0f1](https://github.com/qanapi/qanapi-sdk-python/commit/a42a0f1246b626668b94a3e1e2e16576136a57bd))
+* **api:** add schema models ([a1c8e1e](https://github.com/qanapi/qanapi-sdk-python/commit/a1c8e1ee14307ac894294ff2f9903aa36974a355))
+* **api:** Add v2 routes as sub resources ([45a1f93](https://github.com/qanapi/qanapi-sdk-python/commit/45a1f9304f104dae19ccced8da9a6b6fa6d56fe1))
+* **api:** examples ([ec3160e](https://github.com/qanapi/qanapi-sdk-python/commit/ec3160ebd0b074fec074a00e51b34c6b30fe40cd))
+* **api:** make x-qanapi-fields required in v3 decrypt ([8a939dd](https://github.com/qanapi/qanapi-sdk-python/commit/8a939dd23a7065c3265447481ae15dca47dcbec7))
+* **api:** move v3 to the top ([4b28703](https://github.com/qanapi/qanapi-sdk-python/commit/4b287030d17d471a723ed20bc37e753eac88721c))
+* **api:** remove ApiKeyAuth from specific v2 routes ([496ce77](https://github.com/qanapi/qanapi-sdk-python/commit/496ce77d9ec535174f9631dd7b4b801a832676d2))
+* **api:** rename V2 encryption schemas ([fd073eb](https://github.com/qanapi/qanapi-sdk-python/commit/fd073eb34c0ca1bba929a1b75a9c2f91a077286e))
+* **api:** set v3 encryption routes body param name ([2cf46d7](https://github.com/qanapi/qanapi-sdk-python/commit/2cf46d761fc00cb14a96a96402f0697b12f88c00))
+* **api:** update OpenApi spec to reflect docs ([64f3933](https://github.com/qanapi/qanapi-sdk-python/commit/64f393399c31e2e02b987fa1d8fd9b0271a3f0c3))
+* **api:** V3 Encryption Schemas ([d8bebbd](https://github.com/qanapi/qanapi-sdk-python/commit/d8bebbd2968d7c4f3288bed7c9f497db87ace646))
+
 ## 1.13.1 (2026-07-24)
 
 Full Changelog: [v1.13.0...v1.13.1](https://github.com/qanapi/qanapi-sdk-python/compare/v1.13.0...v1.13.1)
