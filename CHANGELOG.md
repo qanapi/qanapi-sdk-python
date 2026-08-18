@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.0 (2026-08-18)
+
+Full Changelog: [v1.14.0...v1.15.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.14.0...v1.15.0)
+
+### Features
+
+* **api:** add API V3 classification routes ([68f2870](https://github.com/qanapi/qanapi-sdk-python/commit/68f287038f4dffcd19aaee558f780f6581af3dd4))
+
 ## 1.14.0 (2026-08-10)
 
 Full Changelog: [v1.13.1...v1.14.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.13.1...v1.14.0)
