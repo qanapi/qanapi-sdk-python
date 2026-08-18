@@ -113,7 +113,7 @@ class ConfigurationsResource(SyncAPIResource):
         """
         if not configuration:
             raise ValueError(f"Expected a non-empty value for `configuration` but received {configuration!r}")
-        return self._put(
+        return self._patch(
             path_template("/v3/configurations/{configuration}", configuration=configuration),
             body=maybe_transform({"name": name}, configuration_update_params.ConfigurationUpdateParams),
             options=make_request_options(
@@ -298,7 +298,7 @@ class AsyncConfigurationsResource(AsyncAPIResource):
         """
         if not configuration:
             raise ValueError(f"Expected a non-empty value for `configuration` but received {configuration!r}")
-        return await self._put(
+        return await self._patch(
             path_template("/v3/configurations/{configuration}", configuration=configuration),
             body=await async_maybe_transform({"name": name}, configuration_update_params.ConfigurationUpdateParams),
             options=make_request_options(

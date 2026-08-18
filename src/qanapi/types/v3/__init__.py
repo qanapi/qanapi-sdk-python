@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from .log_api_params import LogAPIParams as LogAPIParams
 from .log_api_response import LogAPIResponse as LogAPIResponse
-from .user_patch_params import UserPatchParams as UserPatchParams
 from .log_unified_params import LogUnifiedParams as LogUnifiedParams
 from .role_list_response import RoleListResponse as RoleListResponse
 from .user_create_params import UserCreateParams as UserCreateParams
 from .user_list_response import UserListResponse as UserListResponse
+from .user_update_params import UserUpdateParams as UserUpdateParams
 from .log_activity_params import LogActivityParams as LogActivityParams
 from .log_unified_response import LogUnifiedResponse as LogUnifiedResponse
 from .api_key_list_response import APIKeyListResponse as APIKeyListResponse
@@ -18,8 +18,15 @@ from .api_key_rotate_response import APIKeyRotateResponse as APIKeyRotateRespons
 from .log_qanapi_flow_response import LogQanapiFlowResponse as LogQanapiFlowResponse
 from .encryption_decrypt_params import EncryptionDecryptParams as EncryptionDecryptParams
 from .encryption_encrypt_params import EncryptionEncryptParams as EncryptionEncryptParams
+from .classification_list_params import ClassificationListParams as ClassificationListParams
 from .configuration_create_params import ConfigurationCreateParams as ConfigurationCreateParams
 from .configuration_list_response import ConfigurationListResponse as ConfigurationListResponse
 from .configuration_update_params import ConfigurationUpdateParams as ConfigurationUpdateParams
 from .encryption_decrypt_response import EncryptionDecryptResponse as EncryptionDecryptResponse
 from .encryption_encrypt_response import EncryptionEncryptResponse as EncryptionEncryptResponse
+from .classification_create_params import ClassificationCreateParams as ClassificationCreateParams
+from .classification_list_response import ClassificationListResponse as ClassificationListResponse
+from .classification_show_response import ClassificationShowResponse as ClassificationShowResponse
+from .classification_update_params import ClassificationUpdateParams as ClassificationUpdateParams
+from .classification_create_response import ClassificationCreateResponse as ClassificationCreateResponse
+from .classification_update_response import ClassificationUpdateResponse as ClassificationUpdateResponse

@@ -7,4 +7,6 @@ from .user import User as User
 from .value import Value as Value
 from .api_key import APIKey as APIKey
 from .permission import Permission as Permission
+from .google_group import GoogleGroup as GoogleGroup
 from .configuration import Configuration as Configuration
+from .google_group_param import GoogleGroupParam as GoogleGroupParam
