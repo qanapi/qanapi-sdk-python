@@ -123,6 +123,7 @@ class TestEncryption:
                 "address": "bar",
             },
             x_qanapi_fields="x-qanapi-fields",
+            x_qanapi_classification="x-qanapi-classification",
             x_qanapi_destination="x-qanapi-destination",
         )
         assert_matches_type(EncryptionEncryptResponse, encryption, path=["response"])
@@ -294,6 +295,7 @@ class TestAsyncEncryption:
                 "address": "bar",
             },
             x_qanapi_fields="x-qanapi-fields",
+            x_qanapi_classification="x-qanapi-classification",
             x_qanapi_destination="x-qanapi-destination",
         )
         assert_matches_type(EncryptionEncryptResponse, encryption, path=["response"])

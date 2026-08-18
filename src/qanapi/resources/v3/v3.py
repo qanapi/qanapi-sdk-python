@@ -52,6 +52,14 @@ from .configurations import (
     ConfigurationsResourceWithStreamingResponse,
     AsyncConfigurationsResourceWithStreamingResponse,
 )
+from .classifications import (
+    ClassificationsResource,
+    AsyncClassificationsResource,
+    ClassificationsResourceWithRawResponse,
+    AsyncClassificationsResourceWithRawResponse,
+    ClassificationsResourceWithStreamingResponse,
+    AsyncClassificationsResourceWithStreamingResponse,
+)
 
 __all__ = ["V3Resource", "AsyncV3Resource"]
 
@@ -80,6 +88,10 @@ class V3Resource(SyncAPIResource):
     @cached_property
     def encryption(self) -> EncryptionResource:
         return EncryptionResource(self._client)
+
+    @cached_property
+    def classifications(self) -> ClassificationsResource:
+        return ClassificationsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> V3ResourceWithRawResponse:
@@ -125,6 +137,10 @@ class AsyncV3Resource(AsyncAPIResource):
     @cached_property
     def encryption(self) -> AsyncEncryptionResource:
         return AsyncEncryptionResource(self._client)
+
+    @cached_property
+    def classifications(self) -> AsyncClassificationsResource:
+        return AsyncClassificationsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncV3ResourceWithRawResponse:
@@ -174,6 +190,10 @@ class V3ResourceWithRawResponse:
     def encryption(self) -> EncryptionResourceWithRawResponse:
         return EncryptionResourceWithRawResponse(self._v3.encryption)
 
+    @cached_property
+    def classifications(self) -> ClassificationsResourceWithRawResponse:
+        return ClassificationsResourceWithRawResponse(self._v3.classifications)
+
 
 class AsyncV3ResourceWithRawResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
@@ -202,6 +222,10 @@ class AsyncV3ResourceWithRawResponse:
     @cached_property
     def encryption(self) -> AsyncEncryptionResourceWithRawResponse:
         return AsyncEncryptionResourceWithRawResponse(self._v3.encryption)
+
+    @cached_property
+    def classifications(self) -> AsyncClassificationsResourceWithRawResponse:
+        return AsyncClassificationsResourceWithRawResponse(self._v3.classifications)
 
 
 class V3ResourceWithStreamingResponse:
@@ -232,6 +256,10 @@ class V3ResourceWithStreamingResponse:
     def encryption(self) -> EncryptionResourceWithStreamingResponse:
         return EncryptionResourceWithStreamingResponse(self._v3.encryption)
 
+    @cached_property
+    def classifications(self) -> ClassificationsResourceWithStreamingResponse:
+        return ClassificationsResourceWithStreamingResponse(self._v3.classifications)
+
 
 class AsyncV3ResourceWithStreamingResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
@@ -260,3 +288,7 @@ class AsyncV3ResourceWithStreamingResponse:
     @cached_property
     def encryption(self) -> AsyncEncryptionResourceWithStreamingResponse:
         return AsyncEncryptionResourceWithStreamingResponse(self._v3.encryption)
+
+    @cached_property
+    def classifications(self) -> AsyncClassificationsResourceWithStreamingResponse:
+        return AsyncClassificationsResourceWithStreamingResponse(self._v3.classifications)

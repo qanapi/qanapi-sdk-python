@@ -16,4 +16,6 @@ class EncryptionEncryptParams(TypedDict, total=False):
 
     x_qanapi_fields: Required[Annotated[str, PropertyInfo(alias="x-qanapi-fields")]]
 
+    x_qanapi_classification: Annotated[str, PropertyInfo(alias="x-qanapi-classification")]
+
     x_qanapi_destination: Annotated[str, PropertyInfo(alias="x-qanapi-destination")]
