@@ -90,6 +90,7 @@ class EncryptionResource(SyncAPIResource):
         *,
         data: Dict[str, object],
         x_qanapi_fields: str,
+        x_qanapi_classification: str | Omit = omit,
         x_qanapi_destination: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -119,6 +120,7 @@ class EncryptionResource(SyncAPIResource):
             **strip_not_given(
                 {
                     "x-qanapi-fields": x_qanapi_fields,
+                    "x-qanapi-classification": x_qanapi_classification,
                     "x-qanapi-destination": x_qanapi_destination,
                 }
             ),
@@ -200,6 +202,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
         *,
         data: Dict[str, object],
         x_qanapi_fields: str,
+        x_qanapi_classification: str | Omit = omit,
         x_qanapi_destination: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -229,6 +232,7 @@ class AsyncEncryptionResource(AsyncAPIResource):
             **strip_not_given(
                 {
                     "x-qanapi-fields": x_qanapi_fields,
+                    "x-qanapi-classification": x_qanapi_classification,
                     "x-qanapi-destination": x_qanapi_destination,
                 }
             ),

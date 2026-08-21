@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["UserPatchParams"]
+__all__ = ["UserUpdateParams"]
 
 
-class UserPatchParams(TypedDict, total=False):
+class UserUpdateParams(TypedDict, total=False):
     email: str
 
     name: str

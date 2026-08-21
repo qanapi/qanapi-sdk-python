@@ -3,7 +3,7 @@
 Types:
 
 ```python
-from qanapi.types import APIKey, Configuration, Permission, Role, User, Value
+from qanapi.types import APIKey, Configuration, GoogleGroup, Permission, Role, User, Value
 ```
 
 ## Roles
@@ -29,7 +29,7 @@ from qanapi.types.v3 import ConfigurationListResponse
 Methods:
 
 - <code title="post /v3/configurations">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">create</a>(\*\*<a href="src/qanapi/types/v3/configuration_create_params.py">params</a>) -> <a href="./src/qanapi/types/configuration.py">Configuration</a></code>
-- <code title="put /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">update</a>(configuration, \*\*<a href="src/qanapi/types/v3/configuration_update_params.py">params</a>) -> <a href="./src/qanapi/types/configuration.py">Configuration</a></code>
+- <code title="patch /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">update</a>(configuration, \*\*<a href="src/qanapi/types/v3/configuration_update_params.py">params</a>) -> <a href="./src/qanapi/types/configuration.py">Configuration</a></code>
 - <code title="get /v3/configurations">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">list</a>() -> <a href="./src/qanapi/types/v3/configuration_list_response.py">ConfigurationListResponse</a></code>
 - <code title="delete /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">delete</a>(configuration) -> None</code>
 - <code title="get /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/qanapi/resources/v3/configurations.py">show</a>(configuration) -> <a href="./src/qanapi/types/configuration.py">Configuration</a></code>
@@ -45,10 +45,10 @@ from qanapi.types.v3 import UserListResponse
 Methods:
 
 - <code title="post /v3/users">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">create</a>(\*\*<a href="src/qanapi/types/v3/user_create_params.py">params</a>) -> <a href="./src/qanapi/types/user.py">User</a></code>
+- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">update</a>(user, \*\*<a href="src/qanapi/types/v3/user_update_params.py">params</a>) -> <a href="./src/qanapi/types/user.py">User</a></code>
 - <code title="get /v3/users">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">list</a>() -> <a href="./src/qanapi/types/v3/user_list_response.py">UserListResponse</a></code>
 - <code title="delete /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">delete</a>(user) -> None</code>
 - <code title="get /v3/users/me">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">me</a>() -> <a href="./src/qanapi/types/user.py">User</a></code>
-- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">patch</a>(user, \*\*<a href="src/qanapi/types/v3/user_patch_params.py">params</a>) -> <a href="./src/qanapi/types/user.py">User</a></code>
 - <code title="patch /v3/users/{user}/restore">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">restore</a>(user) -> <a href="./src/qanapi/types/user.py">User</a></code>
 - <code title="get /v3/users/{user}">client.v3.users.<a href="./src/qanapi/resources/v3/users.py">show</a>(user) -> <a href="./src/qanapi/types/user.py">User</a></code>
 
@@ -99,6 +99,27 @@ Methods:
 
 - <code title="post /v3/encryption/{proxy}/decrypt">client.v3.encryption.<a href="./src/qanapi/resources/v3/encryption.py">decrypt</a>(proxy, \*\*<a href="src/qanapi/types/v3/encryption_decrypt_params.py">params</a>) -> <a href="./src/qanapi/types/v3/encryption_decrypt_response.py">EncryptionDecryptResponse</a></code>
 - <code title="post /v3/encryption/{proxy}/encrypt">client.v3.encryption.<a href="./src/qanapi/resources/v3/encryption.py">encrypt</a>(proxy, \*\*<a href="src/qanapi/types/v3/encryption_encrypt_params.py">params</a>) -> <a href="./src/qanapi/types/v3/encryption_encrypt_response.py">EncryptionEncryptResponse</a></code>
+
+## Classifications
+
+Types:
+
+```python
+from qanapi.types.v3 import (
+    ClassificationCreateResponse,
+    ClassificationUpdateResponse,
+    ClassificationListResponse,
+    ClassificationShowResponse,
+)
+```
+
+Methods:
+
+- <code title="post /v3/classifications">client.v3.classifications.<a href="./src/qanapi/resources/v3/classifications.py">create</a>(\*\*<a href="src/qanapi/types/v3/classification_create_params.py">params</a>) -> <a href="./src/qanapi/types/v3/classification_create_response.py">ClassificationCreateResponse</a></code>
+- <code title="patch /v3/classifications/{classification}">client.v3.classifications.<a href="./src/qanapi/resources/v3/classifications.py">update</a>(classification, \*\*<a href="src/qanapi/types/v3/classification_update_params.py">params</a>) -> <a href="./src/qanapi/types/v3/classification_update_response.py">ClassificationUpdateResponse</a></code>
+- <code title="get /v3/classifications">client.v3.classifications.<a href="./src/qanapi/resources/v3/classifications.py">list</a>(\*\*<a href="src/qanapi/types/v3/classification_list_params.py">params</a>) -> <a href="./src/qanapi/types/v3/classification_list_response.py">ClassificationListResponse</a></code>
+- <code title="delete /v3/classifications/{classification}">client.v3.classifications.<a href="./src/qanapi/resources/v3/classifications.py">delete</a>(classification) -> None</code>
+- <code title="get /v3/classifications/{classification}">client.v3.classifications.<a href="./src/qanapi/resources/v3/classifications.py">show</a>(classification) -> <a href="./src/qanapi/types/v3/classification_show_response.py">ClassificationShowResponse</a></code>
 
 # V2
 

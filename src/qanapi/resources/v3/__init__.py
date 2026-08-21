@@ -56,6 +56,14 @@ from .configurations import (
     ConfigurationsResourceWithStreamingResponse,
     AsyncConfigurationsResourceWithStreamingResponse,
 )
+from .classifications import (
+    ClassificationsResource,
+    AsyncClassificationsResource,
+    ClassificationsResourceWithRawResponse,
+    AsyncClassificationsResourceWithRawResponse,
+    ClassificationsResourceWithStreamingResponse,
+    AsyncClassificationsResourceWithStreamingResponse,
+)
 
 __all__ = [
     "RolesResource",
@@ -94,6 +102,12 @@ __all__ = [
     "AsyncEncryptionResourceWithRawResponse",
     "EncryptionResourceWithStreamingResponse",
     "AsyncEncryptionResourceWithStreamingResponse",
+    "ClassificationsResource",
+    "AsyncClassificationsResource",
+    "ClassificationsResourceWithRawResponse",
+    "AsyncClassificationsResourceWithRawResponse",
+    "ClassificationsResourceWithStreamingResponse",
+    "AsyncClassificationsResourceWithStreamingResponse",
     "V3Resource",
     "AsyncV3Resource",
     "V3ResourceWithRawResponse",
