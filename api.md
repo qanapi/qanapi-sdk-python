@@ -132,8 +132,8 @@ from qanapi.types.v2 import (
     AuthLoginResponse,
     AuthLogoutResponse,
     AuthRefreshTokenResponse,
-    AuthRetrieveUserDetailsResponse,
     AuthRevokeTokenResponse,
+    AuthUserDetailsResponse,
 )
 ```
 
@@ -142,8 +142,8 @@ Methods:
 - <code title="post /v2/auth/login">client.v2.auth.<a href="./src/qanapi/resources/v2/auth.py">login</a>(\*\*<a href="src/qanapi/types/v2/auth_login_params.py">params</a>) -> <a href="./src/qanapi/types/v2/auth_login_response.py">AuthLoginResponse</a></code>
 - <code title="post /v2/auth/logout">client.v2.auth.<a href="./src/qanapi/resources/v2/auth.py">logout</a>() -> <a href="./src/qanapi/types/v2/auth_logout_response.py">AuthLogoutResponse</a></code>
 - <code title="post /v2/auth/refresh">client.v2.auth.<a href="./src/qanapi/resources/v2/auth.py">refresh_token</a>() -> <a href="./src/qanapi/types/v2/auth_refresh_token_response.py">AuthRefreshTokenResponse</a></code>
-- <code title="get /v2/auth/userdetails">client.v2.auth.<a href="./src/qanapi/resources/v2/auth.py">retrieve_user_details</a>() -> <a href="./src/qanapi/types/v2/auth_retrieve_user_details_response.py">AuthRetrieveUserDetailsResponse</a></code>
 - <code title="post /v2/auth/revoke">client.v2.auth.<a href="./src/qanapi/resources/v2/auth.py">revoke_token</a>() -> <a href="./src/qanapi/types/v2/auth_revoke_token_response.py">AuthRevokeTokenResponse</a></code>
+- <code title="get /v2/auth/userdetails">client.v2.auth.<a href="./src/qanapi/resources/v2/auth.py">user_details</a>() -> <a href="./src/qanapi/types/v2/auth_user_details_response.py">AuthUserDetailsResponse</a></code>
 
 ## Encrypt
 
