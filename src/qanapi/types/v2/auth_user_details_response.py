@@ -5,10 +5,10 @@ from datetime import datetime
 
 from ..._models import BaseModel
 
-__all__ = ["AuthRetrieveUserDetailsResponse"]
+__all__ = ["AuthUserDetailsResponse"]
 
 
-class AuthRetrieveUserDetailsResponse(BaseModel):
+class AuthUserDetailsResponse(BaseModel):
     id: Optional[int] = None
 
     email: Optional[str] = None

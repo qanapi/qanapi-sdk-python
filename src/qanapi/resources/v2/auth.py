@@ -19,8 +19,8 @@ from ..._base_client import make_request_options
 from ...types.v2.auth_login_response import AuthLoginResponse
 from ...types.v2.auth_logout_response import AuthLogoutResponse
 from ...types.v2.auth_revoke_token_response import AuthRevokeTokenResponse
+from ...types.v2.auth_user_details_response import AuthUserDetailsResponse
 from ...types.v2.auth_refresh_token_response import AuthRefreshTokenResponse
-from ...types.v2.auth_retrieve_user_details_response import AuthRetrieveUserDetailsResponse
 
 __all__ = ["AuthResource", "AsyncAuthResource"]
 
@@ -122,25 +122,6 @@ class AuthResource(SyncAPIResource):
             cast_to=AuthRefreshTokenResponse,
         )
 
-    def retrieve_user_details(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AuthRetrieveUserDetailsResponse:
-        """Get user details"""
-        return self._get(
-            "/v2/auth/userdetails",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AuthRetrieveUserDetailsResponse,
-        )
-
     def revoke_token(
         self,
         *,
@@ -158,6 +139,25 @@ class AuthResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=AuthRevokeTokenResponse,
+        )
+
+    def user_details(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AuthUserDetailsResponse:
+        """Get user details"""
+        return self._get(
+            "/v2/auth/userdetails",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AuthUserDetailsResponse,
         )
 
 
@@ -258,25 +258,6 @@ class AsyncAuthResource(AsyncAPIResource):
             cast_to=AuthRefreshTokenResponse,
         )
 
-    async def retrieve_user_details(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AuthRetrieveUserDetailsResponse:
-        """Get user details"""
-        return await self._get(
-            "/v2/auth/userdetails",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AuthRetrieveUserDetailsResponse,
-        )
-
     async def revoke_token(
         self,
         *,
@@ -296,6 +277,25 @@ class AsyncAuthResource(AsyncAPIResource):
             cast_to=AuthRevokeTokenResponse,
         )
 
+    async def user_details(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AuthUserDetailsResponse:
+        """Get user details"""
+        return await self._get(
+            "/v2/auth/userdetails",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AuthUserDetailsResponse,
+        )
+
 
 class AuthResourceWithRawResponse:
     def __init__(self, auth: AuthResource) -> None:
@@ -310,11 +310,11 @@ class AuthResourceWithRawResponse:
         self.refresh_token = to_raw_response_wrapper(
             auth.refresh_token,
         )
-        self.retrieve_user_details = to_raw_response_wrapper(
-            auth.retrieve_user_details,
-        )
         self.revoke_token = to_raw_response_wrapper(
             auth.revoke_token,
+        )
+        self.user_details = to_raw_response_wrapper(
+            auth.user_details,
         )
 
 
@@ -331,11 +331,11 @@ class AsyncAuthResourceWithRawResponse:
         self.refresh_token = async_to_raw_response_wrapper(
             auth.refresh_token,
         )
-        self.retrieve_user_details = async_to_raw_response_wrapper(
-            auth.retrieve_user_details,
-        )
         self.revoke_token = async_to_raw_response_wrapper(
             auth.revoke_token,
+        )
+        self.user_details = async_to_raw_response_wrapper(
+            auth.user_details,
         )
 
 
@@ -352,11 +352,11 @@ class AuthResourceWithStreamingResponse:
         self.refresh_token = to_streamed_response_wrapper(
             auth.refresh_token,
         )
-        self.retrieve_user_details = to_streamed_response_wrapper(
-            auth.retrieve_user_details,
-        )
         self.revoke_token = to_streamed_response_wrapper(
             auth.revoke_token,
+        )
+        self.user_details = to_streamed_response_wrapper(
+            auth.user_details,
         )
 
 
@@ -373,9 +373,9 @@ class AsyncAuthResourceWithStreamingResponse:
         self.refresh_token = async_to_streamed_response_wrapper(
             auth.refresh_token,
         )
-        self.retrieve_user_details = async_to_streamed_response_wrapper(
-            auth.retrieve_user_details,
-        )
         self.revoke_token = async_to_streamed_response_wrapper(
             auth.revoke_token,
+        )
+        self.user_details = async_to_streamed_response_wrapper(
+            auth.user_details,
         )
