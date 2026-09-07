@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.16.0 (2026-09-07)
+
+Full Changelog: [v1.15.0...v1.16.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.15.0...v1.16.0)
+
+### Features
+
+* initial stlc build ([d9accfe](https://github.com/qanapi/qanapi-sdk-python/commit/d9accfea56efe9a146789f7f9ab009366a906ddd))
+* initial stlc build ([a4a0b35](https://github.com/qanapi/qanapi-sdk-python/commit/a4a0b35f28ecb67431b8b6254448fed75458842f))
+
+
+### Chores
+
+* add github workflows as custom code ([71c0d69](https://github.com/qanapi/qanapi-sdk-python/commit/71c0d69291b9cdcf49ceb1c33b80fa783cd7364a))
+* setup workflows ([52cf9e0](https://github.com/qanapi/qanapi-sdk-python/commit/52cf9e0ac77717e512de69d21df1365109cca081))
+
 ## 1.15.0 (2026-08-18)
 
 Full Changelog: [v1.14.0...v1.15.0](https://github.com/qanapi/qanapi-sdk-python/compare/v1.14.0...v1.15.0)
